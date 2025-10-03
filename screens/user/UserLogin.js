@@ -8,7 +8,6 @@ export default function UserLogin({ navigation }) {
 
   const handleLogin = () => {
     console.log('USER Login:', { email, password });
-    // Add your USER login logic here
   };
 
   return (
@@ -49,7 +48,7 @@ export default function UserLogin({ navigation }) {
         <View style={styles.links}>
           <TouchableOpacity onPress={() => navigation.navigate('UserRegister')}>
             <Text style={styles.linkText}>
-              Don't have an account? <Text style={styles.linkBold}>Register</Text>
+              Don't have an account? <Text style={styles.linkBold}>Register User</Text>
             </Text>
           </TouchableOpacity>
           

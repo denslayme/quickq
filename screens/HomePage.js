@@ -3,10 +3,10 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function HomePage({ navigation }) {
   useEffect(() => {
-    // Navigate to UserLogin after 3 seconds
+    // Navigate to UserLogin after 2 seconds
     const timer = setTimeout(() => {
-      navigation.replace('UserLogin');  // ← Goes straight to UserLogin
-    }, 3500);
+      navigation.replace('UserLogin');  // Goes straight to UserLogin
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, [navigation]);

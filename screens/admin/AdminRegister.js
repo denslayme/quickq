@@ -12,7 +12,6 @@ export default function AdminRegister({ navigation }) {
 
   const handleRegister = () => {
     console.log('ADMIN Register:', { fullName, email, employeeid, officename, password });
-    // Add your ADMIN registration logic here
   };
 
   return (
