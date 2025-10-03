@@ -4,11 +4,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function AdminRegister({ navigation }) {
   const [fullName, setFullName] = useState('');
+  const [officename, setOffice] = useState('');
   const [email, setEmail] = useState('');
+  const [employeeid, setEmployeeID] = useState('');  
   const [password, setPassword] = useState('');
+  
 
   const handleRegister = () => {
-    console.log('ADMIN Register:', { fullName, email, password });
+    console.log('ADMIN Register:', { fullName, email, employeeid, officename, password });
     // Add your ADMIN registration logic here
   };
 
@@ -39,6 +42,26 @@ export default function AdminRegister({ navigation }) {
             onChangeText={setEmail}
             keyboardType="email-address"
             autoCapitalize="none"
+          />
+        </View>
+
+        <View style={styles.inputGroup}>
+          <Text style={styles.label}>ID NO.</Text>
+          <TextInput
+          style={styles.input}
+          placeholder="Enter Employee ID No."
+          value={employeeid}
+          onChangeText={setEmployeeID}
+          />
+        </View>
+
+        <View style={styles.inputGroup}>
+          <Text style={styles.label}>OFFICE</Text>
+          <TextInput
+          style={styles.input}
+          placeholder="Enter Office Assigned (Full Name)"
+          value={officename}
+          onChangeText={setOffice}
           />
         </View>
         

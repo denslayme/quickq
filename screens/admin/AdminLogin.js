@@ -49,7 +49,7 @@ export default function AdminLogin({ navigation }) {
         <View style={styles.links}>
           <TouchableOpacity onPress={() => navigation.navigate('AdminRegister')}>
             <Text style={styles.linkText}>
-              Don't have an account? <Text style={styles.linkBold}>Register User?</Text>
+              Don't have an account? <Text style={styles.linkBold}>Register Admin?</Text>
             </Text>
           </TouchableOpacity>
           

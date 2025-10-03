@@ -1,28 +1,21 @@
-import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function HomePage({ navigation }) {
+  useEffect(() => {
+    // Navigate to UserLogin after 3 seconds
+    const timer = setTimeout(() => {
+      navigation.replace('UserLogin');  // ← Goes straight to UserLogin
+    }, 3500);
+
+    return () => clearTimeout(timer);
+  }, [navigation]);
+
   return (
     <View style={styles.container}>
       <View style={styles.logoBox} />
       <Text style={styles.title}>QuickQ</Text>
       <Text style={styles.subtitle}>Skip the line, save your time!</Text>
-      
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity 
-          style={styles.button}
-          onPress={() => navigation.navigate('UserLogin')}
-        >
-          <Text style={styles.buttonText}>Login as User</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity 
-          style={[styles.button, styles.buttonSecondary]}
-          onPress={() => navigation.navigate('AdminLogin')}
-        >
-          <Text style={[styles.buttonText, styles.buttonTextSecondary]}>Login as Admin</Text>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 }
@@ -52,30 +45,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#6b7280',
     textAlign: 'center',
-    marginBottom: 48,
-  },
-  buttonContainer: {
-    width: '100%',
-    gap: 16,
-  },
-  button: {
-    backgroundColor: '#9333ea',
-    paddingVertical: 16,
-    paddingHorizontal: 48,
-    borderRadius: 24,
-    alignItems: 'center',
-  },
-  buttonSecondary: {
-    backgroundColor: '#ffffff',
-    borderWidth: 2,
-    borderColor: '#9333ea',
-  },
-  buttonText: {
-    color: '#ffffff',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  buttonTextSecondary: {
-    color: '#9333ea',
   },
 });

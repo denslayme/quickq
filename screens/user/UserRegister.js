@@ -4,12 +4,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function UserRegister({ navigation }) {
   const [fullName, setFullName] = useState('');
-  const [idNumber, setIdNumber] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleRegister = () => {
-    console.log('USER Register:', { fullName, idNumber, email, password });
+    console.log('USER Register:', { fullName, email, password });
     // Add your USER registration logic here
   };
 
@@ -25,13 +24,13 @@ export default function UserRegister({ navigation }) {
           <Text style={styles.label}>FULL NAME</Text>
           <TextInput
             style={styles.input}
-            placeholder="Enter your Full Name if Guest/Alumni"
+            placeholder="Enter your Full Name"
             value={fullName}
             onChangeText={setFullName}
           />
         </View>
         
-        <View style={styles.inputGroup}>
+       {/* <View style={styles.inputGroup}> 
           <Text style={styles.label}>ID NUMBER</Text>
           <TextInput
             style={styles.input}
@@ -39,7 +38,7 @@ export default function UserRegister({ navigation }) {
             value={idNumber}
             onChangeText={setIdNumber}
           />
-        </View>
+        </View> */}
         
         <View style={styles.inputGroup}>
           <Text style={styles.label}>EMAIL ADDRESS</Text>
