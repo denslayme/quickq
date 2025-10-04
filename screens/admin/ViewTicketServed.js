@@ -4,10 +4,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 
-export default function ViewTicketServed({ navigation }) {
-    const officeName = route?.params?.officeName || 'Office';
-
-
+export default function ViewTicketServed({ navigation, route }) {
+  // Get office name from route params or use a default
+  const officeName = route?.params?.officeName || "Office Name";
+  
   // Example ticket data - all tickets here are already served
   const [tickets] = useState([
     { id: 1, ticketNumber: "#QN25" },
@@ -29,8 +29,6 @@ export default function ViewTicketServed({ navigation }) {
     navigation.navigate('TicketServedInfo', { ticket });
   };
 
-
-
   return (
     <SafeAreaView style={styles.container}>
       {/* Header with Gradient */}
@@ -51,7 +49,7 @@ export default function ViewTicketServed({ navigation }) {
         style={styles.backButton}
         onPress={() => navigation.goBack()}
       >
-        <Ionicons name="chevron-back" size={28} color="#374151" />
+        <Ionicons name="chevron-back" size={24} color="#ffffffff" />
       </TouchableOpacity>
 
       {/* Tickets Container */}
@@ -89,61 +87,74 @@ export default function ViewTicketServed({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#f5f5f5",
   },
   header: {
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 40,
-    paddingBottom: 30,
+    paddingTop: 20,
+    paddingBottom: 24,
     paddingHorizontal: 20,
   },
   headerContent: {
     alignItems: "center",
   },
   officeName: {
-    fontSize: 28,
+    fontSize: 32,
+    
     fontWeight: "bold",
     color: "white",
-    marginBottom: 4,
+    marginBottom: 9,
   },
   headerSubtitle: {
     fontSize: 16,
-    color: "rgba(255, 255, 255, 0.9)",
+    color: "rgba(255, 255, 255, 0.95)",
+    fontWeight: "400",
+    marginBottom: 4,
   },
   backButton: {
-    position: "absolute",
-    top: 120,
-    left: 16,
-    padding: 8,
-    zIndex: 10,
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    marginTop: 16,
+    marginBottom: 8,
   },
   content: {
     flex: 1,
-    paddingHorizontal: 16,
-    paddingTop: 24,
-    paddingBottom: 16,
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    paddingBottom: 20,
   },
   ticketContainer: {
     flex: 1,
     backgroundColor: "white",
-    borderRadius: 24,
-    borderWidth: 2,
+    borderRadius: 20,
+    borderWidth: 1.5,
     borderColor: "#8A2D7F",
     overflow: "hidden",
+    shadowColor: "#741865ff",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 2,
   },
   scrollView: {
     flex: 1,
   },
   scrollContent: {
-    padding: 4,
+    paddingVertical: 8,
+    paddingHorizontal: 4,
   },
   ticketItem: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingVertical: 16,
-    paddingHorizontal: 16,
+    paddingVertical: 14,
+    paddingHorizontal: 20,
     borderBottomWidth: 1,
     borderBottomColor: "#e5e7eb",
   },
@@ -151,30 +162,19 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
   },
   ticketNumber: {
-    fontSize: 16,
-    color: "#374151",
-    fontWeight: "500",
-  },
-  viewButton: {
-    backgroundColor: "#c7d2fe",
-    paddingHorizontal: 24,
-    paddingVertical: 8,
-    borderRadius: 16,
-  },
-  viewButtonText: {
-    fontSize: 14,
-    color: "#4f46e5",
-    fontWeight: "600",
+    fontSize: 15,
+    color: "#4b5563",
+    fontWeight: "400",
   },
   servedBadge: {
-    backgroundColor: "#d1d5db",
-    paddingHorizontal: 20,
-    paddingVertical: 8,
-    borderRadius: 16,
+    backgroundColor: "#b8c9b8",
+    paddingHorizontal: 18,
+    paddingVertical: 6,
+    borderRadius: 14,
   },
   servedText: {
-    fontSize: 14,
-    color: "#6b7280",
-    fontWeight: "600",
+    fontSize: 13,
+    color: "#ffffff",
+    fontWeight: "500",
   },
 });

@@ -102,6 +102,11 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#8A2D7F",
     overflow: "hidden",
+    shadowColor: "#741865ff",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
   },
   scrollView: {
     flex: 1,

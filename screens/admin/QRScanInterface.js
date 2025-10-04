@@ -106,12 +106,23 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   backButton: {
-    marginRight: 12,
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    marginTop: 16,
+    marginBottom: 8,
   },
   headerTitle: {
     fontSize: 22,
     fontWeight: 'bold',
     color: 'white',
+    textAlign: 'center',
+  },
+  headerSubtitle: {
+    fontSize: 14,
+    color: 'white',
+    textAlign: 'center',
   },
   content: {
     flex: 1,

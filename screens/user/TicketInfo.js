@@ -4,17 +4,32 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function APTicketInfo({ navigation }) {
+
+  const handleNotif = () => {
+  console.log('Notif button pressed');
+  navigation.navigate('NotifPage');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
-       <LinearGradient
-        colors={['#8A2D7F', '#8650AB', '#8372D8']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        style={styles.header}
-      >
-        <Text style={styles.headerTitle}>Admin Panel</Text>
-        <Text style={styles.headerSubtitle}>View Ticket Info</Text>
-      </LinearGradient>
+       {/* Header */}
+             <LinearGradient
+         colors={['#8A2D7F', '#8650AB', '#8372D8']}
+         start={{ x: 0, y: 0 }}
+         end={{ x: 1, y: 0 }}
+         style={styles.header}
+       >
+           <View style={styles.headerContent}>
+             <Text style={styles.headerTitle}>Ticket Info</Text>
+             <Text style={styles.headerSubtitle}>One-time Use Only</Text>
+           </View>
+         <TouchableOpacity 
+           style={styles.notificationButton}
+           onPress={handleNotif}
+         >
+           <Ionicons name="notifications-outline" size={28} color="#ffffff" />
+         </TouchableOpacity>
+       </LinearGradient>
     </SafeAreaView>
   );
 }

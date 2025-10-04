@@ -70,14 +70,8 @@ export default function AdminDashboard({ navigation }) {
     >
         <View style={styles.headerContent}>
           <Text style={styles.headerTitle}>QuickQ</Text>
-          <Text style={styles.headerSubtitle}>Choose an office in USTP-CDO</Text>
+          <Text style={styles.headerSubtitle}>Click your Office Assigned</Text>
         </View>
-      <TouchableOpacity 
-        style={styles.notificationButton}
-        onPress={handleNotif}
-      >
-        <Ionicons name="notifications-outline" size={28} color="#ffffff" />
-      </TouchableOpacity>
     </LinearGradient>
 
       {/* Office Grid */}
@@ -178,13 +172,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#e9d5ff',
     textAlign: 'center',
-  },
-  notificationButton: {
-    padding: 4,
-    marginTop: 4,
-    position: 'absolute',
-    right: 32,
-    top: 20,
   },
   content: {
     flex: 1,

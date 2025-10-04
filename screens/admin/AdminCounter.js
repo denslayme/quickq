@@ -6,7 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export default function AdminCounter({ route, navigation }) {
   const { officeName = 'Admin Panel', officeId } = route.params || {};
-  
+
   const [tickets, setTickets] = useState([
     { id: 'Q055', status: 'serve' },
     { id: 'Q059', status: 'pending' },
@@ -15,59 +15,61 @@ export default function AdminCounter({ route, navigation }) {
     { id: 'Q042', status: 'pending' },
   ]);
 
-
-  const handleTicketPress = (ticket) => {
-    navigation.navigate('APTicketInfo', { ticket });
-  };
-}
-  
   const handleBack = () => {
     navigation.goBack();
   };
 
   const handleViewTicketServed = () => {
-  navigation.navigate('ViewTicketServed', {
-    officeName: officeName,
-    officeId: officeId
-  });
-};
+    navigation.navigate('ViewTicketServed', {
+      officeName: officeName,
+      officeId: officeId,
+    });
+  };
 
   const handleQRScanner = () => {
     console.log('QR Scanner pressed');
     navigation.navigate('QRScanInterface', {
       officeName: officeName,
-      officeId: officeId
+      officeId: officeId,
     });
+  };
+
+  // Serve ticket functionality
+  const handleServeTicket = (ticketId) => {
+    setTickets((prev) =>
+      prev.map((t) =>
+        t.id === ticketId ? { ...t, status: 'serve' } : t
+      )
+    );
+  };
+
+  // Ticket press functionality: navigate to ticket info
+  const handleTicketPress = (ticket) => {
+    navigation.navigate('APTicketInfo', { ticket });
   };
 
   return (
     <SafeAreaView style={styles.container}>
-        {/* Header */}
-          <LinearGradient
-      colors={['#8A2D7F', '#8650AB', '#8372D8']}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 0 }}
-      style={styles.header}
-    >
+      {/* Header */}
+      <LinearGradient
+        colors={['#8A2D7F', '#8650AB', '#8372D8']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.header}
+      >
         <View style={styles.headerContent}>
-          <Text style={styles.headerTitle}>Admin Panel</Text>
+          <Text style={styles.headerTitle}>{officeName}</Text>
           <Text style={styles.headerSubtitle}>Manage Queue</Text>
         </View>
-      <TouchableOpacity 
-        style={styles.notificationButton}
-        onPress={handleNotif}
-      >
-        <Ionicons name="notifications-outline" size={28} color="#ffffff" />
-      </TouchableOpacity>
-    </LinearGradient>
+      </LinearGradient>
 
       {/* Content */}
-      <ScrollView 
+      <ScrollView
         style={styles.content}
         showsVerticalScrollIndicator={false}
       >
         {/* Back Button */}
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.backButton}
           onPress={handleBack}
         >
@@ -79,12 +81,13 @@ export default function AdminCounter({ route, navigation }) {
 
         <View style={styles.ticketsContainer}>
           {tickets.map((ticket, index) => (
-            <View 
+            <TouchableOpacity
               key={ticket.id}
               style={[
                 styles.ticketRow,
                 index === tickets.length - 1 && styles.ticketRowLast
               ]}
+              onPress={() => handleTicketPress(ticket)} // Ticket press
             >
               <Text style={styles.ticketId}>#{ticket.id}</Text>
               <TouchableOpacity
@@ -99,12 +102,12 @@ export default function AdminCounter({ route, navigation }) {
                   {ticket.status === 'serve' ? 'Serve' : 'Pending'}
                 </Text>
               </TouchableOpacity>
-            </View>
+            </TouchableOpacity>
           ))}
         </View>
 
         {/* View Ticket Served Button */}
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.viewTicketButton}
           onPress={handleViewTicketServed}
         >
@@ -112,7 +115,7 @@ export default function AdminCounter({ route, navigation }) {
         </TouchableOpacity>
 
         {/* QR Scanner Button */}
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.qrScannerButton}
           onPress={handleQRScanner}
         >
@@ -122,7 +125,7 @@ export default function AdminCounter({ route, navigation }) {
       </ScrollView>
     </SafeAreaView>
   );
-
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -145,20 +148,14 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: 'bold',
     color: '#ffffff',
-    marginBottom: 4,
+    marginBottom: 8,
     textAlign: 'center',
   },
   headerSubtitle: {
     fontSize: 16,
     color: '#e9d5ff',
     textAlign: 'center',
-  },
-  notificationButton: {
-    padding: 4,
-    marginTop: 8,
-    position: 'absolute',
-    right: 32,
-    top: 20,
+    marginBottom: 4,
   },
   content: {
     flex: 1,
@@ -176,7 +173,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: '#000000',
-    marginBottom: 16,
+    marginBottom: 10,
   },
   ticketsContainer: {
     backgroundColor: '#ffffff',
@@ -236,7 +233,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   qrScannerButton: {
-    backgroundColor: '#9333ea',
+    backgroundColor: '#9441e3ff',
     borderRadius: 12,
     paddingVertical: 16,
     flexDirection: 'row',

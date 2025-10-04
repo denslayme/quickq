@@ -20,7 +20,7 @@ export default function AdminLogin({ navigation }) {
         end={{ x: 1, y: 0 }}
         style={styles.header}
       >
-        <Text style={styles.headerTitle}>Welcome Backt</Text>
+        <Text style={styles.headerTitle}>Welcome Back</Text>
         <Text style={styles.headerSubtitle}>Sign in to continue</Text>
       </LinearGradient>
       

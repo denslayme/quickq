@@ -50,7 +50,7 @@ export default function APTicketInfo({ navigation, route }) {
         style={styles.backButton}
         onPress={() => navigation.goBack()}
       >
-        <Ionicons name="chevron-back" size={28} color="#374151" />
+        <Ionicons name="chevron-back" size={24} color="#000000" />
       </TouchableOpacity>
 
       <ScrollView 
@@ -136,17 +136,20 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     marginBottom: 4,
+    textAlign: 'center',
   },
   headerSubtitle: {
     fontSize: 16,
-    color: 'rgba(255, 255, 255, 0.9)',
+    color: 'white',
   },
   backButton: {
-    position: 'absolute',
-    top: 120,
-    left: 16,
-    padding: 8,
-    zIndex: 10,
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    marginTop: 16,
+    marginBottom: 8,
+    marginLeft: 15,
   },
   content: {
     flex: 1,
@@ -201,7 +204,7 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   qrButton: {
-    backgroundColor: '#8A2D7F',
+    backgroundColor: '#b710c0ff',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

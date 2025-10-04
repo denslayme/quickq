@@ -30,8 +30,8 @@ export default function TicketServedInfo({ navigation }) {
         end={{ x: 1, y: 0 }}
         style={styles.header}
       >
-        <Text style={styles.headerTitle}>Welcome Backt</Text>
-        <Text style={styles.headerSubtitle}>Sign in to continue</Text>
+        <Text style={styles.headerTitle}>Admin Panel</Text>
+        <Text style={styles.headerSubtitle}>View Ticket Served Info</Text>
       </LinearGradient>
    
 
