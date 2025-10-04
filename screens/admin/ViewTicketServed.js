@@ -16,12 +16,6 @@ export default function ViewTicketServed({ route, navigation }) {
     office: 'Registrar\'s Office',
     service: 'Subject Sequencing & Retention',
   };
-
-  const handleNotif = () => {
-    console.log('Notif button pressed');
-    navigation.navigate('NotifPage');
-  };
-
   const handleBack = () => {
     navigation.goBack();
   };

@@ -15,7 +15,7 @@ export default function UserRegister({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-     <LinearGradient
+       <LinearGradient
         colors={['#8A2D7F', '#8650AB', '#8372D8']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   header: {
-    backgroundColor: '#9333ea',
     paddingTop: 60,
     paddingBottom: 40,
     paddingHorizontal: 32,
