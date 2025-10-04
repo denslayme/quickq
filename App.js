@@ -28,7 +28,6 @@ export default function App() {
         <Stack.Screen name="UserRegister" component={UserScreens.UserRegister} />
         <Stack.Screen name="UserDashboard" component={UserScreens.UserDashboard} />
         <Stack.Screen name="NotifPage" component={UserScreens.NotifPage} />
-        <Stack.Screen name="OfficeClicked" component={UserScreens.OfficeClicked} />
         <Stack.Screen name="TicketCreated" component={UserScreens.TicketCreated} />
         <Stack.Screen name="TicketInfo" component={UserScreens.TicketInfo} />
 
