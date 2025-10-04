@@ -56,28 +56,25 @@ export default function UserDashboard({ navigation }) {
   };
 
   const handleNotif = () => {
-    console.log('Notif button pressed');
-    navigation.navigate('NotifPage');
+  console.log('Notif button pressed');
+  navigation.navigate('NotifPage');
   };
 
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
-      <View style={styles.header}>
-        <View style={styles.headerContent}>
-          <Text style={styles.headerTitle}>QuickQ</Text>
-          <Text style={styles.headerSubtitle}>Choose an office in USTP-CDO</Text>
-        </View>
-        <TouchableOpacity style={styles.notificationButton}>
-          <Ionicons name="notifications-outline" size={28} color="#ffffff" />
-        </TouchableOpacity>
-      </View>
-
-      {/* Notif Button */}
-              <TouchableOpacity 
-                style={styles.notificationButton}
-                onPress={handleNotif}
-              ></TouchableOpacity>
+    <View style={styles.header}>
+      <View style={styles.headerContent}>
+      <Text style={styles.headerTitle}>QuickQ</Text>
+      <Text style={styles.headerSubtitle}>Choose an office in USTP-CDO</Text>
+    </View>
+  <TouchableOpacity 
+    style={styles.notificationButton}
+    onPress={handleNotif}
+  >
+    <Ionicons name="notifications-outline" size={28} color="#ffffff" />
+  </TouchableOpacity>
+</View>
 
       {/* Office Grid */}
       <ScrollView 
