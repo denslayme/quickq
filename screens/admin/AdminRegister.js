@@ -24,7 +24,7 @@ export default function AdminRegister({ navigation }) {
         style={styles.header}
       ></LinearGradient>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Create Account</Text>
+        <Text style={styles.headerTitle}>Create Admin Account</Text>
         <Text style={styles.headerSubtitle}>Join QuickQ today</Text>
       </View>
       

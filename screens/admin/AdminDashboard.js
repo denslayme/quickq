@@ -62,18 +62,15 @@ export default function AdminDashboard({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
-      <LinearGradient
-          colors={['#8A2D7F', '#8650AB', '#8372D8']}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          style={styles.header}
-      ></LinearGradient>
-      <View style={styles.header}>
-        <View style={styles.headerContent}>
-          <Text style={styles.headerTitle}>QuickQ</Text>
-          <Text style={styles.headerSubtitle}>Click your office assigned</Text>
-        </View>
-      </View>
+       <LinearGradient
+        colors={['#8A2D7F', '#8650AB', '#8372D8']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.header}
+      >
+        <Text style={styles.headerTitle}>Create Account</Text>
+        <Text style={styles.headerSubtitle}>Join QuickQ today</Text>
+      </LinearGradient>
 
       {/* Office Grid */}
       <ScrollView 

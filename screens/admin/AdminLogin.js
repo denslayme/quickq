@@ -14,16 +14,15 @@ export default function AdminLogin({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <LinearGradient
+       <LinearGradient
         colors={['#8A2D7F', '#8650AB', '#8372D8']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={styles.header}
-      ></LinearGradient>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Welcome Back</Text>
+      >
+        <Text style={styles.headerTitle}>Welcome Backt</Text>
         <Text style={styles.headerSubtitle}>Sign in to continue</Text>
-      </View>
+      </LinearGradient>
       
       <View style={styles.form}>
         <View style={styles.inputGroup}>
