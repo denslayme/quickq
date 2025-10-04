@@ -70,10 +70,7 @@ export default function UserDashboard({ navigation }) {
   end={{ x: 1, y: 0 }}
   style={styles.header}
 >
-  <Text style={styles.headerTitle}>Create Account</Text>
-  <Text style={styles.headerSubtitle}>Join QuickQ today</Text>
-</LinearGradient>
-      <View style={styles.headerContent}>
+    <View style={styles.headerContent}>
       <Text style={styles.headerTitle}>QuickQ</Text>
       <Text style={styles.headerSubtitle}>Choose an office in USTP-CDO</Text>
     </View>
@@ -83,6 +80,8 @@ export default function UserDashboard({ navigation }) {
   >
     <Ionicons name="notifications-outline" size={28} color="#ffffff" />
   </TouchableOpacity>
+</LinearGradient>
+    
 
       {/* Office Grid */}
       <ScrollView 

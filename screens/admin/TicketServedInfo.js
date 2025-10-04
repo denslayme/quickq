@@ -24,22 +24,16 @@ export default function TicketServedInfo({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Header */}
-      <LinearGradient
+       <LinearGradient
         colors={['#8A2D7F', '#8650AB', '#8372D8']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={styles.header}
-      ></LinearGradient>
-      <View style={styles.header}>
-        <TouchableOpacity 
-          style={styles.backButton}
-          onPress={() => navigation.goBack()}
-        >
-          <Ionicons name="arrow-back" size={24} color="white" />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Ticket Details</Text>
-      </View>
+      >
+        <Text style={styles.headerTitle}>Welcome Backt</Text>
+        <Text style={styles.headerSubtitle}>Sign in to continue</Text>
+      </LinearGradient>
+   
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {/* Status Badge */}

@@ -36,6 +36,7 @@ export default function App() {
         <Stack.Screen name="AdminRegister" component={AdminScreens.AdminRegister} />
         <Stack.Screen name="AdminDashboard" component={AdminScreens.AdminDashboard} />
         <Stack.Screen name="AdminCounter" component={AdminScreens.AdminCounter} />
+        <Stack.Screen name="APTicketInfo" component={AdminScreens.APTicketInfo} />
         <Stack.Screen name="ViewTicketServed" component={AdminScreens.ViewTicketServed} />
         <Stack.Screen name="TicketServedInfo" component={AdminScreens.TicketServedInfo} />
         <Stack.Screen name="QRScanInterface" component={AdminScreens.QRScanInterface} />

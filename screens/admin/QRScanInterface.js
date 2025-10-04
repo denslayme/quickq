@@ -27,22 +27,15 @@ export default function QRScanInterface({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Header */}
-      <LinearGradient
+       <LinearGradient
         colors={['#8A2D7F', '#8650AB', '#8372D8']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={styles.header}
-        ></LinearGradient>
-      <View style={styles.header}>
-        <TouchableOpacity 
-          style={styles.backButton}
-          onPress={() => navigation.goBack()}
-        >
-          <Ionicons name="arrow-back" size={24} color="white" />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Scan QR Code</Text>
-      </View>
+      >
+        <Text style={styles.headerTitle}>Admin Panel</Text>
+        <Text style={styles.headerSubtitle}>Scan QR Code</Text>
+      </LinearGradient>
 
       {/* Content */}
       <View style={styles.content}>

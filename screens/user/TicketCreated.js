@@ -11,11 +11,12 @@ export default function TicketCreated({ navigation }) {
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={styles.header}
-        ></LinearGradient>
+       >
       <View style={styles.content}>
         <Text style={styles.title}>Ticket Created</Text>
         <Text style={styles.subtitle}>Coming Soon</Text>
       </View>
+      </LinearGradient>
     </SafeAreaView>
   );
 }

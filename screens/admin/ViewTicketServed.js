@@ -1,118 +1,87 @@
-import React from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
+import { useState } from "react";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 
-export default function ViewTicketServed({ route, navigation }) {
-  const { officeName = 'Admin Panel', officeId } = route.params || {};
-  
-  // Sample ticket data - replace with actual data from your backend
-  const ticketData = {
-    queueNumber: 'Q058',
-    name: 'Dwayne Johnson',
-    yearSection: 'H4R9',
-    classification: 'Student',
-    office: 'Registrar\'s Office',
-    service: 'Subject Sequencing & Retention',
-  };
-  const handleBack = () => {
-    navigation.goBack();
+export default function ViewTicketServed({ navigation }) {
+    const officeName = route?.params?.officeName || 'Office';
+
+
+  // Example ticket data - all tickets here are already served
+  const [tickets] = useState([
+    { id: 1, ticketNumber: "#QN25" },
+    { id: 2, ticketNumber: "#QN24" },
+    { id: 3, ticketNumber: "#QN25" },
+    { id: 4, ticketNumber: "#QN26" },
+    { id: 5, ticketNumber: "#QN27" },
+    { id: 6, ticketNumber: "#QN28" },
+    { id: 7, ticketNumber: "#QN29" },
+    { id: 8, ticketNumber: "#QN30" },
+    { id: 9, ticketNumber: "#QN31" },
+    { id: 10, ticketNumber: "#QN32" },
+    { id: 11, ticketNumber: "#QN33" },
+    { id: 12, ticketNumber: "#QN34" },
+  ]);
+
+  const handleTicketPress = (ticket) => {
+    console.log("Viewing served ticket:", ticket.ticketNumber);
+    navigation.navigate('TicketServedInfo', { ticket });
   };
 
-  const handleQRScanner = () => {
-    console.log('QR Scanner pressed');
-    navigation.navigate('QRScanInterface', {
-      officeName: officeName,
-      officeId: officeId
-    });
-  };
+
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Header */}
+      {/* Header with Gradient */}
       <LinearGradient
         colors={['#8A2D7F', '#8650AB', '#8372D8']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={styles.header}
-      ></LinearGradient>
-      <View style={styles.header}>
+      >
         <View style={styles.headerContent}>
-          <Text style={styles.headerTitle}>{officeName}</Text>
-          <Text style={styles.headerSubtitle}>Manage Queue</Text>
+          <Text style={styles.officeName}>{officeName}</Text>
+          <Text style={styles.headerSubtitle}>Ticket Served List</Text>
+        </View>
+      </LinearGradient>
+
+      {/* Back Button */}
+      <TouchableOpacity 
+        style={styles.backButton}
+        onPress={() => navigation.goBack()}
+      >
+        <Ionicons name="chevron-back" size={28} color="#374151" />
+      </TouchableOpacity>
+
+      {/* Tickets Container */}
+      <View style={styles.content}>
+        <View style={styles.ticketContainer}>
+          <ScrollView 
+            style={styles.scrollView}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={styles.scrollContent}
+          >
+            {tickets.map((ticket, index) => (
+              <TouchableOpacity
+                key={ticket.id} 
+                style={[
+                  styles.ticketItem,
+                  index === tickets.length - 1 && styles.lastTicketItem
+                ]}
+                onPress={() => handleTicketPress(ticket)}
+                activeOpacity={0.7}
+              >
+                <Text style={styles.ticketNumber}>{ticket.ticketNumber}</Text>
+                
+                <View style={styles.servedBadge}>
+                  <Text style={styles.servedText}>Served</Text>
+                </View>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
         </View>
       </View>
-
-      {/* Content */}
-      <ScrollView 
-        style={styles.content}
-        contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={false}
-      >
-        {/* Back Button */}
-        <TouchableOpacity 
-          style={styles.backButton}
-          onPress={handleBack}
-        >
-          <Ionicons name="chevron-back" size={24} color="#000000" />
-        </TouchableOpacity>
-
-        {/* Section Title */}
-        <Text style={styles.sectionTitle}>Queue Details</Text>
-
-        {/* Queue Details Card */}
-        <View style={styles.detailsCard}>
-          {/* Queue Number and Serve Button */}
-          <View style={styles.queueHeader}>
-            <Text style={styles.queueNumber}>#{ticketData.queueNumber}</Text>
-            <TouchableOpacity style={styles.serveButton}>
-              <Text style={styles.serveButtonText}>Serve</Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.divider} />
-
-          {/* Customer Details */}
-          <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Name:</Text>
-            <Text style={styles.detailValue}>{ticketData.name}</Text>
-          </View>
-
-          <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Year & Section:</Text>
-            <Text style={styles.detailValue}>{ticketData.yearSection}</Text>
-          </View>
-
-          <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Customer Classification:</Text>
-            <Text style={styles.detailValue}>{ticketData.classification}</Text>
-          </View>
-
-          <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Office Chosen:</Text>
-            <Text style={styles.detailValue}>{ticketData.office}</Text>
-          </View>
-
-          <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Service Chosen/Concern:</Text>
-            <Text style={styles.detailValue}>{ticketData.service}</Text>
-          </View>
-        </View>
-
-        {/* Spacer */}
-        <View style={styles.spacer} />
-
-        {/* QR Scanner Button */}
-        <TouchableOpacity 
-          style={styles.qrScannerButton}
-          onPress={handleQRScanner}
-        >
-
-          <Ionicons name="qr-code" size={24} color="#ffffff" />
-          <Text style={styles.qrScannerButtonText}>QR Scanner</Text>
-        </TouchableOpacity>
-      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -120,125 +89,92 @@ export default function ViewTicketServed({ route, navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: "#ffffff",
   },
   header: {
-    backgroundColor: '#9333ea',
-    paddingTop: 20,
-    paddingBottom: 40,
-    paddingHorizontal: 32,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    position: 'relative',
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: 40,
+    paddingBottom: 30,
+    paddingHorizontal: 20,
   },
   headerContent: {
-    alignItems: 'center',
+    alignItems: "center",
   },
-  headerTitle: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#ffffff',
+  officeName: {
+    fontSize: 28,
+    fontWeight: "bold",
+    color: "white",
     marginBottom: 4,
-    textAlign: 'center',
   },
   headerSubtitle: {
     fontSize: 16,
-    color: '#e9d5ff',
-    textAlign: 'center',
+    color: "rgba(255, 255, 255, 0.9)",
   },
-  notificationButton: {
-    padding: 4,
-    marginTop: 8,
-    position: 'absolute',
-    right: 32,
-    top: 20,
+  backButton: {
+    position: "absolute",
+    top: 120,
+    left: 16,
+    padding: 8,
+    zIndex: 10,
   },
   content: {
     flex: 1,
-    paddingHorizontal: 24,
+    paddingHorizontal: 16,
+    paddingTop: 24,
+    paddingBottom: 16,
+  },
+  ticketContainer: {
+    flex: 1,
+    backgroundColor: "white",
+    borderRadius: 24,
+    borderWidth: 2,
+    borderColor: "#8A2D7F",
+    overflow: "hidden",
+  },
+  scrollView: {
+    flex: 1,
   },
   scrollContent: {
-    paddingBottom: 32,
+    padding: 4,
   },
-  backButton: {
-    width: 40,
-    height: 40,
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    marginTop: 16,
-    marginBottom: 8,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#000000',
-    marginBottom: 16,
-  },
-  detailsCard: {
-    backgroundColor: '#ffffff',
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: '#e5e7eb',
-    padding: 20,
-  },
-  queueHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
-  queueNumber: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#000000',
-  },
-  serveButton: {
-    backgroundColor: '#4ade80',
-    paddingVertical: 8,
-    paddingHorizontal: 24,
-    borderRadius: 8,
-  },
-  serveButtonText: {
-    color: '#ffffff',
-    fontSize: 14,
-    fontWeight: '600',
-  },
-  divider: {
-    height: 1,
-    backgroundColor: '#e5e7eb',
-    marginBottom: 16,
-  },
-  detailRow: {
-    marginBottom: 12,
-  },
-  detailLabel: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#000000',
-    marginBottom: 4,
-  },
-  detailValue: {
-    fontSize: 14,
-    color: '#4b5563',
-  },
-  spacer: {
-    flex: 1,
-    minHeight: 100,
-  },
-  qrScannerButton: {
-    backgroundColor: '#9333ea',
-    borderRadius: 12,
+  ticketItem: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingVertical: 16,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 'auto',
+    paddingHorizontal: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: "#e5e7eb",
   },
-  qrScannerButtonText: {
-    color: '#ffffff',
+  lastTicketItem: {
+    borderBottomWidth: 0,
+  },
+  ticketNumber: {
     fontSize: 16,
-    fontWeight: '600',
-    marginLeft: 8,
+    color: "#374151",
+    fontWeight: "500",
+  },
+  viewButton: {
+    backgroundColor: "#c7d2fe",
+    paddingHorizontal: 24,
+    paddingVertical: 8,
+    borderRadius: 16,
+  },
+  viewButtonText: {
+    fontSize: 14,
+    color: "#4f46e5",
+    fontWeight: "600",
+  },
+  servedBadge: {
+    backgroundColor: "#d1d5db",
+    paddingHorizontal: 20,
+    paddingVertical: 8,
+    borderRadius: 16,
+  },
+  servedText: {
+    fontSize: 14,
+    color: "#6b7280",
+    fontWeight: "600",
   },
 });

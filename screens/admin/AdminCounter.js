@@ -15,13 +15,11 @@ export default function AdminCounter({ route, navigation }) {
     { id: 'Q042', status: 'pending' },
   ]);
 
-  const handleServeTicket = (ticketId) => {
-    setTickets(tickets.map(ticket => 
-      ticket.id === ticketId 
-        ? { ...ticket, status: 'serve' }
-        : ticket
-    ));
+
+  const handleTicketPress = (ticket) => {
+    navigation.navigate('APTicketInfo', { ticket });
   };
+}
   
   const handleBack = () => {
     navigation.goBack();
@@ -44,19 +42,24 @@ export default function AdminCounter({ route, navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Header */}
-      <LinearGradient
-          colors={['#8A2D7F', '#8650AB', '#8372D8']}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          style={styles.header}
-      ></LinearGradient>
-      <View style={styles.header}>
+        {/* Header */}
+          <LinearGradient
+      colors={['#8A2D7F', '#8650AB', '#8372D8']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 0 }}
+      style={styles.header}
+    >
         <View style={styles.headerContent}>
-            <Text style={styles.headerTitle}>QuickQ</Text>
-            <Text style={styles.headerSubtitle}>Click your office assigned</Text>
+          <Text style={styles.headerTitle}>Admin Panel</Text>
+          <Text style={styles.headerSubtitle}>Manage Queue</Text>
         </View>
-      </View>
+      <TouchableOpacity 
+        style={styles.notificationButton}
+        onPress={handleNotif}
+      >
+        <Ionicons name="notifications-outline" size={28} color="#ffffff" />
+      </TouchableOpacity>
+    </LinearGradient>
 
       {/* Content */}
       <ScrollView 
@@ -119,7 +122,7 @@ export default function AdminCounter({ route, navigation }) {
       </ScrollView>
     </SafeAreaView>
   );
-}
+
 
 const styles = StyleSheet.create({
   container: {
