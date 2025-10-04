@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function AdminLogin({ navigation }) {
   const [email, setEmail] = useState('');
@@ -13,6 +14,12 @@ export default function AdminLogin({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
+      <LinearGradient
+        colors={['#8A2D7F', '#8650AB', '#8372D8']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.header}
+      ></LinearGradient>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Welcome Back</Text>
         <Text style={styles.headerSubtitle}>Sign in to continue</Text>

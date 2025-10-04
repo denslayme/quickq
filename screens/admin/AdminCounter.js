@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function AdminCounter({ route, navigation }) {
   const { officeName = 'Admin Panel', officeId } = route.params || {};
@@ -44,12 +45,18 @@ export default function AdminCounter({ route, navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
-            <View style={styles.header}>
-              <View style={styles.headerContent}>
-                <Text style={styles.headerTitle}>QuickQ</Text>
-                <Text style={styles.headerSubtitle}>Click your office assigned</Text>
-              </View>
-            </View>
+      <LinearGradient
+          colors={['#8A2D7F', '#8650AB', '#8372D8']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={styles.header}
+      ></LinearGradient>
+      <View style={styles.header}>
+        <View style={styles.headerContent}>
+            <Text style={styles.headerTitle}>QuickQ</Text>
+            <Text style={styles.headerSubtitle}>Click your office assigned</Text>
+        </View>
+      </View>
 
       {/* Content */}
       <ScrollView 

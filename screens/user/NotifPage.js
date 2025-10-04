@@ -7,25 +7,25 @@ import { LinearGradient } from "expo-linear-gradient";
 export default function NotifPage({ navigation }) {
   // Example notification data with time and date
   const [notifications] = useState([
-    { id: 1, text: "#QN25", time: "10:30 AM", date: "Oct 5" },
-    { id: 2, text: "#QN24", time: "10:15 AM", date: "Oct 5" },
-    { id: 3, text: "#QN25", time: "10:00 AM", date: "Oct 5" },
-    { id: 4, text: "#QN26", time: "9:45 AM", date: "Oct 5" },
-    { id: 5, text: "#QN27", time: "9:30 AM", date: "Oct 5" },
-    { id: 6, text: "#QN28", time: "9:15 AM", date: "Oct 5" },
-    { id: 7, text: "#QN29", time: "9:00 AM", date: "Oct 5" },
-    { id: 8, text: "#QN30", time: "8:45 AM", date: "Oct 5" },
-    { id: 9, text: "#QN31", time: "8:30 AM", date: "Oct 5" },
-    { id: 10, text: "#QN32", time: "8:15 AM", date: "Oct 5" },
-    { id: 11, text: "#QN33", time: "8:00 AM", date: "Oct 4" },
-    { id: 12, text: "#QN34", time: "7:45 AM", date: "Oct 4" },
+    { id: 1, text: "Ticket Created", time: "11:30 AM", date: "Oct 8" },
+    { id: 2, text: "Ticket Created", time: "10:15 AM", date: "Oct 7" },
+    { id: 3, text: "Ticket expiring soon", time: "4:50 PM", date: "Oct 5" },
+    { id: 4, text: "3 people ahead left", time: "9:45 AM", date: "Oct 5" },
+    { id: 5, text: "Ticket Created", time: "9:30 AM", date: "Oct 5" },
+    { id: 6, text: "Ticket Created", time: "9:15 AM", date: "Oct 1" },
+    { id: 7, text: "Ticket Created", time: "9:00 AM", date: "Sept 20" },
+    { id: 8, text: "Ticket Created", time: "8:45 AM", date: "Sept 19" },
+    { id: 9, text: "Ticket Expired", time: "5:00 PM", date: "Sept 14" },
+    { id: 10, text: "3 people ahead left, Ticket expiring soon", time: "4:30 M", date: "Sept 14" },
+    { id: 11, text: "Ticket Created", time: "8:00 AM", date: "Sept 14" },
+    { id: 12, text: "Ticket Created", time: "7:45 AM", date: "Sept 2" },
   ]);
 
   return (
     <SafeAreaView style={styles.container}>
       {/* Header with Gradient */}
       <LinearGradient
-        colors={['#7c3aed', '#9333ea', '#a855f7']}
+        colors={['#8A2D7F', '#8650AB', '#8372D8']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={styles.header}
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 24,
     borderWidth: 2,
-    borderColor: "#9333ea",
+    borderColor: "#8A2D7F",
     overflow: "hidden",
   },
   scrollView: {
