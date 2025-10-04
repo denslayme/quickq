@@ -16,28 +16,35 @@ export default function ViewTicketServed({ route, navigation }) {
     service: 'Subject Sequencing & Retention',
   };
 
+  const handleNotif = () => {
+    console.log('Notif button pressed');
+    navigation.navigate('NotifPage');
+  };
+
   const handleBack = () => {
     navigation.goBack();
   };
 
   const handleQRScanner = () => {
     console.log('QR Scanner pressed');
-    // Navigate to QR scanner screen
-    // navigation.navigate('QRScanner');
+    navigation.navigate('QRScanInterface', {
+      officeName: officeName,
+      officeId: officeId
+    });
   };
 
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
-      <View style={styles.header}>
-        <View style={styles.headerContent}>
-          <Text style={styles.headerTitle}>{officeName}</Text>
-          <Text style={styles.headerSubtitle}>Manage Queue</Text>
-        </View>
-        <TouchableOpacity style={styles.notificationButton}>
-          <Ionicons name="ellipse" size={24} color="#000000" />
-        </TouchableOpacity>
-      </View>
+            <View style={styles.header}>
+              <View style={styles.headerContent}>
+                <Text style={styles.headerTitle}>QuickQ</Text>
+                <Text style={styles.headerSubtitle}>Click your office assigned</Text>
+              </View>
+              <TouchableOpacity style={styles.notificationButton}>
+                <Ionicons name="notifications-outline" size={28} color="#ffffff" />
+              </TouchableOpacity>
+            </View>
 
       {/* Content */}
       <ScrollView 
@@ -103,6 +110,13 @@ export default function ViewTicketServed({ route, navigation }) {
           style={styles.qrScannerButton}
           onPress={handleQRScanner}
         >
+
+        {/* Notif Button */}
+        <TouchableOpacity 
+          style={styles.notificationButton}
+          onPress={handleNotif}
+        ></TouchableOpacity>
+
           <Ionicons name="qr-code" size={24} color="#ffffff" />
           <Text style={styles.qrScannerButtonText}>QR Scanner</Text>
         </TouchableOpacity>

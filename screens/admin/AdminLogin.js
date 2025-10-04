@@ -8,6 +8,7 @@ export default function AdminLogin({ navigation }) {
 
   const handleLogin = () => {
     console.log('ADMIN Login:', { email, password });
+    navigation.navigate('AdminDashboard');
   };
 
   return (

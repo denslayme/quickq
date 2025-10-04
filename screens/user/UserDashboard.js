@@ -55,6 +55,11 @@ export default function UserDashboard({ navigation }) {
     // navigation.navigate(office.screen);
   };
 
+  const handleNotif = () => {
+    console.log('Notif button pressed');
+    navigation.navigate('NotifPage');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
@@ -67,6 +72,12 @@ export default function UserDashboard({ navigation }) {
           <Ionicons name="notifications-outline" size={28} color="#ffffff" />
         </TouchableOpacity>
       </View>
+
+      {/* Notif Button */}
+              <TouchableOpacity 
+                style={styles.notificationButton}
+                onPress={handleNotif}
+              ></TouchableOpacity>
 
       {/* Office Grid */}
       <ScrollView 

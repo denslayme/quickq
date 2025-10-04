@@ -21,6 +21,10 @@ export default function AdminCounter({ route, navigation }) {
         : ticket
     ));
   };
+  
+  const handleNotif = () => {
+    navigation.navigate('NotifPage');
+  };
 
   const handleBack = () => {
     navigation.goBack();
@@ -44,15 +48,21 @@ export default function AdminCounter({ route, navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
-      <View style={styles.header}>
-        <View style={styles.headerContent}>
-          <Text style={styles.headerTitle}>{officeName}</Text>
-          <Text style={styles.headerSubtitle}>Manage Queue</Text>
-        </View>
-        <TouchableOpacity style={styles.notificationButton}>
-          <Ionicons name="ellipse" size={24} color="#000000" />
-        </TouchableOpacity>
-      </View>
+            <View style={styles.header}>
+              <View style={styles.headerContent}>
+                <Text style={styles.headerTitle}>QuickQ</Text>
+                <Text style={styles.headerSubtitle}>Click your office assigned</Text>
+              </View>
+              <TouchableOpacity style={styles.notificationButton}>
+                <Ionicons name="notifications-outline" size={28} color="#ffffff" />
+              </TouchableOpacity>
+            </View>
+
+      {/* Notif Button */}
+        <TouchableOpacity 
+          style={styles.notificationButton}
+          onPress={handleNotif}
+        ></TouchableOpacity>
 
       {/* Content */}
       <ScrollView 
