@@ -58,11 +58,6 @@ export default function AdminDashboard({ navigation }) {
     });
   };
 
-  const handleNotif = () => {
-    console.log('Notif button pressed');
-    navigation.navigate('NotifPage');
-  };
-
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
@@ -71,16 +66,7 @@ export default function AdminDashboard({ navigation }) {
           <Text style={styles.headerTitle}>QuickQ</Text>
           <Text style={styles.headerSubtitle}>Click your office assigned</Text>
         </View>
-        <TouchableOpacity style={styles.notificationButton}>
-          <Ionicons name="notifications-outline" size={28} color="#ffffff" />
-        </TouchableOpacity>
       </View>
-
-      {/* Notif Button */}
-       <TouchableOpacity 
-        style={styles.notificationButton}
-        onPress={handleNotif}
-       ></TouchableOpacity>
 
       {/* Office Grid */}
       <ScrollView 

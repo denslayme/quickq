@@ -150,12 +150,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#f9fafb',
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
     backgroundColor: '#9333ea',
     paddingTop: 20,
-    paddingBottom: 20,
-    paddingHorizontal: 16,
+    paddingBottom: 40,
+    paddingHorizontal: 32,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    position: 'relative',
   },
   backButton: {
     marginRight: 12,

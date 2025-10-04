@@ -22,10 +22,6 @@ export default function AdminCounter({ route, navigation }) {
     ));
   };
   
-  const handleNotif = () => {
-    navigation.navigate('NotifPage');
-  };
-
   const handleBack = () => {
     navigation.goBack();
   };
@@ -53,16 +49,7 @@ export default function AdminCounter({ route, navigation }) {
                 <Text style={styles.headerTitle}>QuickQ</Text>
                 <Text style={styles.headerSubtitle}>Click your office assigned</Text>
               </View>
-              <TouchableOpacity style={styles.notificationButton}>
-                <Ionicons name="notifications-outline" size={28} color="#ffffff" />
-              </TouchableOpacity>
             </View>
-
-      {/* Notif Button */}
-        <TouchableOpacity 
-          style={styles.notificationButton}
-          onPress={handleNotif}
-        ></TouchableOpacity>
 
       {/* Content */}
       <ScrollView 
@@ -141,8 +128,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     position: 'relative',
-    borderBottomLeftRadius: 24,
-    borderBottomRightRadius: 24,
   },
   headerContent: {
     alignItems: 'center',

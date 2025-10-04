@@ -36,15 +36,12 @@ export default function ViewTicketServed({ route, navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
-            <View style={styles.header}>
-              <View style={styles.headerContent}>
-                <Text style={styles.headerTitle}>QuickQ</Text>
-                <Text style={styles.headerSubtitle}>Click your office assigned</Text>
-              </View>
-              <TouchableOpacity style={styles.notificationButton}>
-                <Ionicons name="notifications-outline" size={28} color="#ffffff" />
-              </TouchableOpacity>
-            </View>
+      <View style={styles.header}>
+        <View style={styles.headerContent}>
+          <Text style={styles.headerTitle}>{officeName}</Text>
+          <Text style={styles.headerSubtitle}>Manage Queue</Text>
+        </View>
+      </View>
 
       {/* Content */}
       <ScrollView 
@@ -111,12 +108,6 @@ export default function ViewTicketServed({ route, navigation }) {
           onPress={handleQRScanner}
         >
 
-        {/* Notif Button */}
-        <TouchableOpacity 
-          style={styles.notificationButton}
-          onPress={handleNotif}
-        ></TouchableOpacity>
-
           <Ionicons name="qr-code" size={24} color="#ffffff" />
           <Text style={styles.qrScannerButtonText}>QR Scanner</Text>
         </TouchableOpacity>
@@ -139,8 +130,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     position: 'relative',
-    borderBottomLeftRadius: 24,
-    borderBottomRightRadius: 24,
   },
   headerContent: {
     alignItems: 'center',
