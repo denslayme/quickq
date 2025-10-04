@@ -8,6 +8,7 @@ import UserLogin from './screens/user/UserLogin';
 import UserRegister from './screens/user/UserRegister';
 import AdminLogin from './screens/admin/AdminLogin';
 import AdminRegister from './screens/admin/AdminRegister';
+import UserDashboard from './screens/user/UserDashboard';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,8 @@ export default function App() {
         <Stack.Screen name="UserRegister" component={UserRegister} />
         <Stack.Screen name="AdminLogin" component={AdminLogin} />
         <Stack.Screen name="AdminRegister" component={AdminRegister} />
+        <Stack.Screen name="UserDashboard" component={UserDashboard} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

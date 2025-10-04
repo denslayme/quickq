@@ -6,9 +6,10 @@ export default function UserLogin({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    console.log('USER Login:', { email, password });
-  };
+const handleLogin = () => {
+  console.log('USER Login:', { email, password });
+  navigation.navigate('UserDashboard');
+};
 
   return (
     <SafeAreaView style={styles.container}>
