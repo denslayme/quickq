@@ -28,8 +28,8 @@ export default function App() {
         <Stack.Screen name="UserRegister" component={UserScreens.UserRegister} />
         <Stack.Screen name="UserDashboard" component={UserScreens.UserDashboard} />
         <Stack.Screen name="NotifPage" component={UserScreens.NotifPage} />
-        <Stack.Screen name="TicketCreated" component={UserScreens.TicketCreated} />
-        <Stack.Screen name="TicketInfo" component={UserScreens.TicketInfo} />
+        {/* <Stack.Screen name="TicketCreated" component={UserScreens.TicketCreated} />
+        <Stack.Screen name="TicketInfo" component={UserScreens.TicketInfo} /> */}
 
         {/* Admin screens */}
         <Stack.Screen name="AdminLogin" component={AdminScreens.AdminLogin} />
@@ -38,8 +38,8 @@ export default function App() {
         <Stack.Screen name="AdminCounter" component={AdminScreens.AdminCounter} />
         <Stack.Screen name="APTicketInfo" component={AdminScreens.APTicketInfo} />
         <Stack.Screen name="ViewTicketServed" component={AdminScreens.ViewTicketServed} />
-        <Stack.Screen name="TicketServedInfo" component={AdminScreens.TicketServedInfo} />
-        <Stack.Screen name="QRScanInterface" component={AdminScreens.QRScanInterface} />
+        {/* <Stack.Screen name="TicketServedInfo" component={AdminScreens.TicketServedInfo} />
+        <Stack.Screen name="QRScanInterface" component={AdminScreens.QRScanInterface} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
