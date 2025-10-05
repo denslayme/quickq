@@ -42,15 +42,15 @@ export default function ViewTicketServed({ navigation, route }) {
           <Text style={styles.officeName}>{officeName}</Text>
           <Text style={styles.headerSubtitle}>Ticket Served List</Text>
         </View>
-      </LinearGradient>
 
       {/* Back Button */}
       <TouchableOpacity 
         style={styles.backButton}
         onPress={() => navigation.goBack()}
       >
-        <Ionicons name="chevron-back" size={24} color="#ffffffff" />
-      </TouchableOpacity>
+        <Ionicons name="chevron-back" size={30} color="white" />
+      </TouchableOpacity>  
+      </LinearGradient>
 
       {/* Tickets Container */}
       <View style={styles.content}>
@@ -90,35 +90,38 @@ const styles = StyleSheet.create({
     backgroundColor: "#f5f5f5",
   },
   header: {
-    alignItems: "center",
-    justifyContent: "center",
-    paddingTop: 20,
-    paddingBottom: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 40,
+    paddingBottom: 30,
     paddingHorizontal: 20,
   },
   headerContent: {
-    alignItems: "center",
+    alignItems: 'center',
+  },
+  headerTitle: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: 'white',
+    marginBottom: 4,
+    textAlign: 'center',
+  },
+  headerSubtitle: {
+    fontSize: 16,
+    color: 'white',
   },
   officeName: {
     fontSize: 32,
-    
     fontWeight: "bold",
     color: "white",
     marginBottom: 9,
   },
-  headerSubtitle: {
-    fontSize: 16,
-    color: "rgba(255, 255, 255, 0.95)",
-    fontWeight: "400",
-    marginBottom: 4,
-  },
   backButton: {
-    width: 40,
-    height: 40,
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    marginTop: 16,
-    marginBottom: 8,
+  position: "absolute",
+  top: 100,
+  left: 10,
+  padding: 4,
+  zIndex: 10,
   },
   content: {
     flex: 1,

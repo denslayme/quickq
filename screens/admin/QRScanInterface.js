@@ -108,19 +108,18 @@ const styles = StyleSheet.create({
   backButton: {
     width: 40,
     height: 40,
-    justifyContent: 'center',
     alignItems: 'flex-start',
     marginTop: 16,
     marginBottom: 8,
   },
   headerTitle: {
-    fontSize: 22,
+    fontSize: 32,
     fontWeight: 'bold',
     color: 'white',
     textAlign: 'center',
   },
   headerSubtitle: {
-    fontSize: 14,
+    fontSize: 16,
     color: 'white',
     textAlign: 'center',
   },

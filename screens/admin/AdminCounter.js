@@ -148,14 +148,12 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: 'bold',
     color: '#ffffff',
-    marginBottom: 8,
     textAlign: 'center',
   },
   headerSubtitle: {
     fontSize: 16,
     color: '#e9d5ff',
     textAlign: 'center',
-    marginBottom: 4,
   },
   content: {
     flex: 1,

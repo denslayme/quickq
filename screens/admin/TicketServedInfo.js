@@ -163,9 +163,15 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   headerTitle: {
-    fontSize: 22,
+    fontSize: 32,
     fontWeight: 'bold',
     color: 'white',
+  },
+  headerSubtitle: {
+    fontSize: 16,
+    color: '#e9d5ff',
+    textAlign: 'center',
+    marginBottom: 4,
   },
   content: {
     flex: 1,
