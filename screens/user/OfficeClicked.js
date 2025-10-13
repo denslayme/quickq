@@ -24,8 +24,7 @@ export default function OfficeClicked({ route, navigation }) {
 
   const handleCreateTicket = () => {
     console.log('Create Ticket/QR code pressed');
-    // Navigate to create ticket screen
-    navigation.navigate('CreateTicket', {
+    navigation.navigate('TicketCreated', {
       officeName: officeName,
       officeId: officeId
     });
@@ -45,15 +44,15 @@ export default function OfficeClicked({ route, navigation }) {
         end={{ x: 1, y: 0 }}
         style={styles.header}
         >
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>({officeName})</Text>
-        <TouchableOpacity 
-                  style={styles.notificationButton}
-                  onPress={handleNotif}
-                >
-                  <Ionicons name="notifications-outline" size={28} color="#ffffff" />
-                </TouchableOpacity>
+      <View style={styles.headerContent}>
+        <Text style={styles.headerTitle}>{officeName}</Text>
       </View>
+        <TouchableOpacity 
+            style={styles.notificationButton}
+            onPress={handleNotif}
+        >
+            <Ionicons name="notifications-outline" size={28} color="#ffffff" />
+        </TouchableOpacity>
       </LinearGradient>
 
       {/* Content */}
@@ -171,7 +170,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: '#e5e7eb',
+    borderColor: '#8A2D7F',
+    shadowColor: '#741865ff',
     padding: 20,
   },
   infoRow: {
@@ -218,14 +218,14 @@ const styles = StyleSheet.create({
   createTicketButton: {
     backgroundColor: '#ffffff',
     borderWidth: 2,
-    borderColor: '#9333ea',
-    borderRadius: 12,
+    borderColor: '#8A2D7F',
+    borderRadius: 20,
     paddingVertical: 16,
     alignItems: 'center',
     marginTop: 'auto',
   },
   createTicketButtonText: {
-    color: '#9333ea',
+    color: '#78226eff',
     fontSize: 16,
     fontWeight: '600',
   },

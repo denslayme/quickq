@@ -22,6 +22,11 @@ export default function TicketServedInfo({ navigation }) {
     navigation.navigate('AdminDashboard');
   };
 
+  const handleQRScanner = () => {
+    console.log('Opening QR Scanner');
+    navigation.navigate('QRScanInterface');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
        <LinearGradient
@@ -33,9 +38,26 @@ export default function TicketServedInfo({ navigation }) {
         <Text style={styles.headerTitle}>Admin Panel</Text>
         <Text style={styles.headerSubtitle}>View Ticket Served Info</Text>
       </LinearGradient>
-   
-
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+
+       <LinearGradient
+        colors={['#8A2D7F', '#8650AB', '#8372D8']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.ticketNumberCard}
+      >
+        <Text style={styles.headerTitle}>Admin Panel</Text>
+        <Text style={styles.headerSubtitle}>View Ticket Served Info</Text>
+      </LinearGradient>
+
+      {/* Back Button */}
+              <TouchableOpacity
+                style={styles.backButton}
+                onPress={handleBack}
+              >
+                <Ionicons name="chevron-back" size={24} color="#000000" />
+              </TouchableOpacity>
+
         {/* Status Badge */}
         <View style={styles.statusContainer}>
           <View style={styles.statusBadge}>
@@ -45,10 +67,15 @@ export default function TicketServedInfo({ navigation }) {
         </View>
 
         {/* Ticket Number */}
-        <View style={styles.ticketNumberCard}>
+        <LinearGradient
+          colors={['#8A2D7F', '#8650AB', '#8372D8']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+        style={styles.ticketNumberCard}
+        >
           <Text style={styles.ticketLabel}>Ticket Number</Text>
           <Text style={styles.ticketNumber}>{ticketData.ticketNumber}</Text>
-        </View>
+        </LinearGradient>
 
         {/* Customer Information */}
         <View style={styles.section}>
@@ -136,10 +163,22 @@ export default function TicketServedInfo({ navigation }) {
           <Text style={styles.completeButtonText}>Complete & Return</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.scanAnotherButton} onPress={() => navigation.goBack()}>
-          <Ionicons name="scan-outline" size={24} color="#9333ea" />
-          <Text style={styles.scanAnotherButtonText}>Scan Another Ticket</Text>
-        </TouchableOpacity>
+        {/* QR Scanner Button */}
+          <TouchableOpacity 
+            onPress={handleQRScanner}
+            activeOpacity={0.8}
+          >
+            <LinearGradient
+              colors={['#8a2d7fbd', '#8750abc2', '#8372d8b8']}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={styles.scanAnotherButton}
+            >
+              <Ionicons name="qr-code" size={24} color="white" style={styles.qrIcon} />
+              <Text style={styles.scanAnotherButtonText}>Scan Another QR</Text>
+            </LinearGradient>
+          </TouchableOpacity>
+
       </ScrollView>
     </SafeAreaView>
   );
@@ -156,11 +195,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'flex-start',
     position: 'relative',
-  },
-  backButton: {
-    marginRight: 12,
   },
   headerTitle: {
     fontSize: 32,
@@ -171,11 +206,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#e9d5ff',
     textAlign: 'center',
-    marginBottom: 4,
   },
   content: {
     flex: 1,
     padding: 20,
+  },
+   backButton: {
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
   },
   statusContainer: {
     alignItems: 'center',
@@ -196,9 +236,8 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   ticketNumberCard: {
-    backgroundColor: '#9333ea',
     padding: 24,
-    borderRadius: 16,
+    borderRadius: 18,
     alignItems: 'center',
     marginBottom: 24,
   },
@@ -255,7 +294,7 @@ const styles = StyleSheet.create({
   },
   completeButton: {
     backgroundColor: '#10b981',
-    borderRadius: 24,
+    borderRadius: 22,
     paddingVertical: 16,
     flexDirection: 'row',
     alignItems: 'center',
@@ -269,20 +308,18 @@ const styles = StyleSheet.create({
     marginLeft: 8,
   },
   scanAnotherButton: {
-    backgroundColor: 'white',
-    borderRadius: 24,
-    paddingVertical: 16,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 2,
-    borderColor: '#9333ea',
-    marginBottom: 24,
+    paddingVertical: 16,
+    borderRadius: 22,
   },
   scanAnotherButtonText: {
-    color: '#9333ea',
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
-    marginLeft: 8,
+    color: 'white',
+  },
+  qrIcon: {
+    marginRight: 8,
   },
 });

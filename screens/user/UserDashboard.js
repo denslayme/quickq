@@ -90,11 +90,7 @@ export default function UserDashboard({ navigation }) {
       </LinearGradient>
 
       {/* Office Grid */}
-      <ScrollView 
-        style={styles.content} 
-        contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={false}
-      >
+      <View style={styles.content}>
         <View style={styles.gridRow}>
           {offices.slice(0, 3).map((office) => (
             <TouchableOpacity
@@ -153,17 +149,18 @@ export default function UserDashboard({ navigation }) {
               <Text style={styles.officeName}>{office.name}</Text>
             </TouchableOpacity>
           ))}
+        </View>
 
-          {/* Log Out Button */}
-            <TouchableOpacity
-              style={styles.LogOutButton}
-               onPress={handleLogOut}
+        {/* Log Out Button */}
+        <View style={styles.logoutContainer}>
+          <TouchableOpacity
+            style={styles.LogOutButton}
+            onPress={handleLogOut}
           >
             <Text style={styles.LogOutButtonText}>Log Out</Text>
-            </TouchableOpacity>
-
+          </TouchableOpacity>
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
@@ -207,17 +204,19 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     backgroundColor: '#ffffff',
-  },
-  scrollContent: {
     paddingHorizontal: 32,
     paddingTop: 32,
-    paddingBottom: 32,
+    justifyContent: 'space-between',
   },
   gridRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'flex-start',
-    marginBottom: 32,
+    marginBottom: 24,
+  },
+  logoutContainer: {
+    paddingHorizontal: 20,
+    paddingBottom: 32,
   },
   officeCard: {
     flex: 1,
@@ -227,7 +226,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: 96,
     height: 96,
-    backgroundColor: '#8650AB',
+    backgroundColor: '#923a88ff',
     borderRadius: 24,
     justifyContent: 'center',
     alignItems: 'center',
@@ -244,7 +243,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     lineHeight: 18,
   },
-
   LogOutButton: {
     backgroundColor: '#ffffff',
     borderWidth: 2,

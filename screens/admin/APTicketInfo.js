@@ -102,16 +102,23 @@ export default function APTicketInfo({ navigation, route }) {
       </ScrollView>
 
       {/* QR Scanner Button */}
-      <View style={styles.footer}>
-        <TouchableOpacity 
-          style={styles.qrButton}
-          onPress={handleQRScanner}
-          activeOpacity={0.8}
-        >
-          <Ionicons name="qr-code" size={24} color="white" style={styles.qrIcon} />
-          <Text style={styles.qrButtonText}>QR Scanner</Text>
-        </TouchableOpacity>
-      </View>
+<View style={styles.footer}>
+  <TouchableOpacity 
+    onPress={handleQRScanner}
+    activeOpacity={0.8}
+  >
+    <LinearGradient
+      colors={['#8a2d7fbd', '#8750abc2', '#8372d8b8']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 0 }}
+      style={styles.qrButton}
+    >
+      <Ionicons name="qr-code" size={24} color="white" style={styles.qrIcon} />
+      <Text style={styles.qrButtonText}>Scan QR</Text>
+    </LinearGradient>
+  </TouchableOpacity>
+</View>
+
     </SafeAreaView>
   );
 }
@@ -204,19 +211,18 @@ const styles = StyleSheet.create({
     paddingBottom: 30,
   },
   qrButton: {
-    backgroundColor: '#b710c0ff',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 16,
-    borderRadius: 12,
-  },
-  qrIcon: {
-    marginRight: 8,
+    borderRadius: 22,
   },
   qrButtonText: {
     fontSize: 18,
     fontWeight: 'bold',
     color: 'white',
+  },
+  qrIcon: {
+    marginRight: 8,
   },
 });

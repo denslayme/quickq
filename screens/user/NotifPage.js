@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   notifContainer: {
     flex: 1,
     backgroundColor: "white",
-    borderRadius: 24,
+    borderRadius: 22,
     borderWidth: 2,
     borderColor: "#8A2D7F",
     overflow: "hidden",

@@ -27,11 +27,8 @@ export default function AdminCounter({ route, navigation }) {
   };
 
   const handleQRScanner = () => {
-    console.log('QR Scanner pressed');
-    navigation.navigate('QRScanInterface', {
-      officeName: officeName,
-      officeId: officeId,
-    });
+    console.log('Opening QR Scanner');
+    navigation.navigate('QRScanInterface');
   };
 
   // Serve ticket functionality
@@ -116,11 +113,18 @@ export default function AdminCounter({ route, navigation }) {
 
         {/* QR Scanner Button */}
         <TouchableOpacity
-          style={styles.qrScannerButton}
           onPress={handleQRScanner}
+          activeOpacity={0.8}
         >
-          <Ionicons name="qr-code" size={24} color="#ffffff" />
-          <Text style={styles.qrScannerButtonText}>QR Scanner</Text>
+        <LinearGradient
+          colors={['#8a2d7fbd', '#8750abc2', '#8372d8b8']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={styles.qrScannerButton}
+        >
+        <Ionicons name="qr-code" size={24} color="white" style={styles.qrIcon} />
+        <Text style={styles.qrScannerButtonText}>Scan QR</Text>
+        </LinearGradient>
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
@@ -219,20 +223,19 @@ const styles = StyleSheet.create({
   viewTicketButton: {
     backgroundColor: '#ffffff',
     borderWidth: 2,
-    borderColor: '#9333ea',
-    borderRadius: 12,
+    borderColor: '#8A2D7F',
+    borderRadius: 22,
     paddingVertical: 16,
     alignItems: 'center',
     marginBottom: 16,
   },
   viewTicketButtonText: {
-    color: '#9333ea',
+    color: '#78226eff',
     fontSize: 16,
     fontWeight: '600',
   },
   qrScannerButton: {
-    backgroundColor: '#9441e3ff',
-    borderRadius: 12,
+    borderRadius: 22,
     paddingVertical: 16,
     flexDirection: 'row',
     justifyContent: 'center',
