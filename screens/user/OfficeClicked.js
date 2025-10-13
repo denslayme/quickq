@@ -2,6 +2,7 @@ import React from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function OfficeClicked({ route, navigation }) {
   const { officeName, officeId } = route.params || {};
@@ -30,15 +31,30 @@ export default function OfficeClicked({ route, navigation }) {
     });
   };
 
+  const handleNotif = () => {
+  console.log('Notif button pressed');
+  navigation.navigate('NotifPage');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
+      <LinearGradient
+        colors={['#8A2D7F', '#8650AB', '#8372D8']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.header}
+        >
       <View style={styles.header}>
         <Text style={styles.headerTitle}>({officeName})</Text>
-        <TouchableOpacity style={styles.notificationButton}>
-          <Ionicons name="notifications-outline" size={24} color="#ffffff" />
-        </TouchableOpacity>
+        <TouchableOpacity 
+                  style={styles.notificationButton}
+                  onPress={handleNotif}
+                >
+                  <Ionicons name="notifications-outline" size={28} color="#ffffff" />
+                </TouchableOpacity>
       </View>
+      </LinearGradient>
 
       {/* Content */}
       <ScrollView 
@@ -105,16 +121,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   header: {
-    backgroundColor: '#9333ea',
     paddingTop: 20,
-    paddingBottom: 30,
+    paddingBottom: 40,
     paddingHorizontal: 32,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'flex-start',
     position: 'relative',
-    borderBottomLeftRadius: 24,
-    borderBottomRightRadius: 24,
+  },
+  headerContent: {
+    alignItems: 'center',
   },
   headerTitle: {
     fontSize: 28,
@@ -124,14 +140,14 @@ const styles = StyleSheet.create({
   },
   notificationButton: {
     padding: 4,
-    marginTop: 0,
+    marginTop: 4,
     position: 'absolute',
     right: 32,
     top: 20,
   },
   content: {
     flex: 1,
-    paddingHorizontal: 24,
+    backgroundColor: '#ffffff',
   },
   scrollContent: {
     paddingBottom: 32,

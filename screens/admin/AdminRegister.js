@@ -13,6 +13,8 @@ export default function AdminRegister({ navigation }) {
 
   const handleRegister = () => {
     console.log('ADMIN Register:', { fullName, email, employeeid, officename, password });
+    navigation.navigate('AdminDashboard');
+
   };
 
   return (

@@ -10,8 +10,7 @@ export default function UserRegister({ navigation }) {
 
   const handleRegister = () => {
     console.log('USER Register:', { fullName, email, password });
-    // Add your USER registration logic here
-  };
+    navigation.navigate('UserDashboard');   };
 
   return (
     <SafeAreaView style={styles.container}>

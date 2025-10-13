@@ -50,9 +50,13 @@ export default function UserDashboard({ navigation }) {
     }
   ];
 
+  const handleLogOut = () => {
+    console.log('Log Out pressed');
+    navigation.navigate('UserLogin');
+  }
+
   const handleOfficePress = (office) => {
     console.log('Selected office:', office.name);
-    // Navigate to OfficeClicked screen with office details
     navigation.navigate('OfficeClicked', { 
       officeName: office.name,
       officeId: office.id 
@@ -149,6 +153,15 @@ export default function UserDashboard({ navigation }) {
               <Text style={styles.officeName}>{office.name}</Text>
             </TouchableOpacity>
           ))}
+
+          {/* Log Out Button */}
+            <TouchableOpacity
+              style={styles.LogOutButton}
+               onPress={handleLogOut}
+          >
+            <Text style={styles.LogOutButtonText}>Log Out</Text>
+            </TouchableOpacity>
+
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -214,7 +227,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: 96,
     height: 96,
-    backgroundColor: '#a855f7',
+    backgroundColor: '#8650AB',
     borderRadius: 24,
     justifyContent: 'center',
     alignItems: 'center',
@@ -230,5 +243,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: '600',
     lineHeight: 18,
+  },
+
+  LogOutButton: {
+    backgroundColor: '#ffffff',
+    borderWidth: 2,
+    borderColor: '#9333ea',
+    borderRadius: 12,
+    paddingVertical: 16,
+    alignItems: 'center',
+  },
+  LogOutButtonText: {
+    color: '#9333ea',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });

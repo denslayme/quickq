@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function TicketCreated({ navigation }) {
@@ -20,7 +21,7 @@ export default function TicketCreated({ navigation }) {
           style={styles.header}
         >
             <View style={styles.headerContent}>
-              <Text style={styles.headerTitle}>QR/Ticke</Text>
+              <Text style={styles.headerTitle}>QR/Ticket</Text>
               <Text style={styles.headerSubtitle}>One-time Use Only</Text>
             </View>
           <TouchableOpacity 
