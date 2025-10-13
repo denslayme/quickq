@@ -52,36 +52,38 @@ export default function UserDashboard({ navigation }) {
 
   const handleOfficePress = (office) => {
     console.log('Selected office:', office.name);
-    // Navigate to specific office screen
-    // navigation.navigate(office.screen);
+    // Navigate to OfficeClicked screen with office details
+    navigation.navigate('OfficeClicked', { 
+      officeName: office.name,
+      officeId: office.id 
+    });
   };
 
   const handleNotif = () => {
-  console.log('Notif button pressed');
-  navigation.navigate('NotifPage');
+    console.log('Notif button pressed');
+    navigation.navigate('NotifPage');
   };
 
   return (
     <SafeAreaView style={styles.container}>
-    {/* Header */}
+      {/* Header */}
       <LinearGradient
-  colors={['#8A2D7F', '#8650AB', '#8372D8']}
-  start={{ x: 0, y: 0 }}
-  end={{ x: 1, y: 0 }}
-  style={styles.header}
->
-    <View style={styles.headerContent}>
-      <Text style={styles.headerTitle}>QuickQ</Text>
-      <Text style={styles.headerSubtitle}>Choose an office in USTP-CDO</Text>
-    </View>
-  <TouchableOpacity 
-    style={styles.notificationButton}
-    onPress={handleNotif}
-  >
-    <Ionicons name="notifications-outline" size={28} color="#ffffff" />
-  </TouchableOpacity>
-</LinearGradient>
-    
+        colors={['#8A2D7F', '#8650AB', '#8372D8']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.header}
+      >
+        <View style={styles.headerContent}>
+          <Text style={styles.headerTitle}>QuickQ</Text>
+          <Text style={styles.headerSubtitle}>Choose an office in USTP-CDO</Text>
+        </View>
+        <TouchableOpacity 
+          style={styles.notificationButton}
+          onPress={handleNotif}
+        >
+          <Ionicons name="notifications-outline" size={28} color="#ffffff" />
+        </TouchableOpacity>
+      </LinearGradient>
 
       {/* Office Grid */}
       <ScrollView 
