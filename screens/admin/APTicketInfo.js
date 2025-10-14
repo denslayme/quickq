@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 16,
-    borderRadius: 22,
+    borderRadius: 26,
   },
   qrButtonText: {
     fontSize: 18,

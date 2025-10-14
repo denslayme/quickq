@@ -27,6 +27,10 @@ export default function TicketServedInfo({ navigation }) {
     navigation.navigate('QRScanInterface');
   };
 
+  const handleBack = () => {
+    navigation.goBack();
+  };
+  
   return (
     <SafeAreaView style={styles.container}>
        <LinearGradient

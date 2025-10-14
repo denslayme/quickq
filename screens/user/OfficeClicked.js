@@ -23,16 +23,16 @@ export default function OfficeClicked({ route, navigation }) {
   };
 
   const handleCreateTicket = () => {
-    console.log('Create Ticket/QR code pressed');
-    navigation.navigate('TicketCreated', {
-      officeName: officeName,
-      officeId: officeId
-    });
+  console.log('Create Ticket/QR code pressed');
+  navigation.navigate('TicketCreated', {
+    officeName: officeName,
+    officeId: officeId
+  });
   };
 
   const handleNotif = () => {
-  console.log('Notif button pressed');
-  navigation.navigate('NotifPage');
+    console.log('Notif button pressed');
+    navigation.navigate('NotifPage');
   };
 
   return (
@@ -43,15 +43,15 @@ export default function OfficeClicked({ route, navigation }) {
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={styles.header}
-        >
-      <View style={styles.headerContent}>
-        <Text style={styles.headerTitle}>{officeName}</Text>
-      </View>
+      >
+        <View style={styles.headerContent}>
+          <Text style={styles.headerTitle}>{officeName}</Text>
+        </View>
         <TouchableOpacity 
-            style={styles.notificationButton}
-            onPress={handleNotif}
+          style={styles.notificationButton}
+          onPress={handleNotif}
         >
-            <Ionicons name="notifications-outline" size={28} color="#ffffff" />
+          <Ionicons name="notifications-outline" size={28} color="#ffffff" />
         </TouchableOpacity>
       </LinearGradient>
 
@@ -98,9 +98,6 @@ export default function OfficeClicked({ route, navigation }) {
             </View>
           </View>
         </View>
-
-        {/* Spacer */}
-        <View style={styles.spacer} />
 
         {/* Create Ticket Button */}
         <TouchableOpacity 
@@ -149,8 +146,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   scrollContent: {
+    paddingHorizontal: 24,
     paddingBottom: 32,
-    flexGrow: 1,
   },
   backButton: {
     width: 40,
@@ -158,7 +155,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     marginTop: 16,
-    marginBottom: 8,
+    marginBottom: 16,
   },
   sectionTitle: {
     fontSize: 18,
@@ -171,23 +168,23 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     borderWidth: 1,
     borderColor: '#8A2D7F',
-    shadowColor: '#741865ff',
-    padding: 20,
+    padding: 16,
+    marginBottom: 24,
   },
   infoRow: {
-    marginBottom: 20,
+    marginBottom: 16,
   },
   infoLabel: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: '600',
     color: '#6b7280',
-    marginBottom: 8,
+    marginBottom: 4,
   },
   infoValue: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '600',
     color: '#000000',
-    lineHeight: 22,
+    lineHeight: 20,
   },
   servicesList: {
     marginTop: 4,
@@ -195,34 +192,30 @@ const styles = StyleSheet.create({
   serviceItem: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    marginBottom: 4,
+    marginBottom: 3,
   },
   bullet: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
     color: '#000000',
     marginRight: 8,
-    lineHeight: 22,
+    lineHeight: 20,
   },
   serviceText: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '600',
     color: '#000000',
     flex: 1,
-    lineHeight: 22,
-  },
-  spacer: {
-    flex: 1,
-    minHeight: 100,
+    lineHeight: 20,
   },
   createTicketButton: {
     backgroundColor: '#ffffff',
     borderWidth: 2,
     borderColor: '#8A2D7F',
-    borderRadius: 20,
-    paddingVertical: 16,
+    borderRadius: 26,
+    paddingVertical: 14,
     alignItems: 'center',
-    marginTop: 'auto',
+    marginTop: 40,
   },
   createTicketButtonText: {
     color: '#78226eff',

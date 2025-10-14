@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   button: {
-    borderRadius: 22,
+    borderRadius: 26,
     paddingVertical: 16,
     alignItems: 'center',
     marginTop: 8,
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 16,
     fontWeight: 'bold',
-  },
+  }, 
   links: {
     alignItems: 'center',
     marginTop: 24,

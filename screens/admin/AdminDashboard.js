@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: 96,
     height: 96,
-    backgroundColor: '#923a88ff',
+    backgroundColor: '#8750abd3',
     borderRadius: 24,
     justifyContent: 'center',
     alignItems: 'center',
@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     borderWidth: 2,
     borderColor: '#9333ea',
-    borderRadius: 12,
+    borderRadius: 26,
     paddingVertical: 16,
     alignItems: 'center',
   },

@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     borderWidth: 2,
     borderColor: '#8A2D7F',
-    borderRadius: 22,
+    borderRadius: 26,
     paddingVertical: 16,
     alignItems: 'center',
     marginBottom: 16,
@@ -235,7 +235,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   qrScannerButton: {
-    borderRadius: 22,
+    borderRadius: 26,
     paddingVertical: 16,
     flexDirection: 'row',
     justifyContent: 'center',
