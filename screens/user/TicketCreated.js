@@ -18,10 +18,15 @@ export default function TicketCreated({ route, navigation }) {
 
   const handleCreateAnother = () => {
     console.log('Create Another Ticket pressed');
+    navigation.navigate('OfficeClicked', {
+      officeName: officeName,
+      officeId: officeId
+    });
   };
 
   const handleViewTicket = () => {
     console.log('View Ticket Info pressed');
+    navigation.navigate('TicketInfo');
   };
 
   return (
@@ -53,43 +58,30 @@ export default function TicketCreated({ route, navigation }) {
         </TouchableOpacity>
 
         {/* QR Code Box */}
-        <View style={styles.qrCodeBox}>
-          <View style={styles.qrPlaceholder}>
-            <Text style={styles.qrPlaceholderText}>QR CODE</Text>
+        <View style={styles.qrCodeContainer}>
+          <View style={styles.qrCodeBox}>
+            <View style={styles.qrPlaceholder}>
+              <Text style={styles.qrPlaceholderText}>QR CODE</Text>
+            </View>
           </View>
+
+          {/* Success Message */}
+          <View style={styles.successMessage}>
+            <Text style={styles.successText}>Ticket/QR created successfully!</Text>
+          </View>
+
+          {/* View Ticket Info Link */}
+          <TouchableOpacity onPress={handleViewTicket} style={styles.viewTicketLinkContainer}>
+            <Text style={styles.viewTicketLink}>View Ticket Info</Text>
+          </TouchableOpacity>
         </View>
-
-        {/* Success Message */}
-        <View style={styles.successMessage}>
-          <Text style={styles.successText}>Ticket/QR created successfully!</Text>
-        </View>
-
-        {/* Ticket Number */}
-        <LinearGradient
-          colors={['#c084fc', '#a855f7']}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={styles.ticketNumberBox}
-        >
-          <Text style={styles.ticketNumber}>#Q042</Text>
-        </LinearGradient>
-
-        {/* Queue Info */}
-        <View style={styles.queueInfoBox}>
-          <Text style={styles.queueNumber}>4</Text>
-          <Text style={styles.queueText}>People are ahead of you</Text>
-        </View>
-
-        {/* Buttons */}
-        <TouchableOpacity style={styles.button} onPress={handleViewTicket}>
-          <Text style={styles.buttonText}>View Ticket Info</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button} onPress={handleCreateAnother}>
-          <Text style={styles.buttonText}>Create Another Ticket</Text>
-        </TouchableOpacity>
 
         <View style={styles.spacer} />
+
+        {/* Create Another Ticket Button */}
+        <TouchableOpacity style={styles.createButton} onPress={handleCreateAnother}>
+          <Text style={styles.createButtonText}>Create Another Ticket</Text>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );
@@ -131,16 +123,21 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 24,
     paddingTop: 16,
+    paddingBottom: 32,
   },
   backButton: {
     width: 40,
     height: 40,
-    marginBottom: 16,
+    marginBottom: 24,
     justifyContent: 'center',
   },
+  qrCodeContainer: {
+    alignItems: 'center',
+    marginBottom: 24,
+  },
   qrCodeBox: {
-    width: '100%',
-    height: 240,
+    width: 220,
+    height: 220,
     backgroundColor: '#f3f4f6',
     borderRadius: 12,
     justifyContent: 'center',
@@ -148,8 +145,8 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   qrPlaceholder: {
-    width: 200,
-    height: 200,
+    width: 180,
+    height: 180,
     backgroundColor: '#8650AB',
     borderRadius: 8,
     justifyContent: 'center',
@@ -162,64 +159,43 @@ const styles = StyleSheet.create({
   },
   successMessage: {
     backgroundColor: '#d1fae5',
-    paddingVertical: 12,
+    paddingVertical: 10,
     paddingHorizontal: 16,
     borderRadius: 8,
-    marginBottom: 20,
+    marginBottom: 16,
   },
   successText: {
     color: '#059669',
-    fontSize: 13,
+    fontSize: 12,
     fontWeight: '600',
     textAlign: 'center',
   },
-  ticketNumberBox: {
-    paddingVertical: 20,
-    paddingHorizontal: 16,
-    borderRadius: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 12,
+  viewTicketLinkContainer: {
+    paddingVertical: 8,
   },
-  ticketNumber: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#ffffff',
-  },
-  queueInfoBox: {
-    backgroundColor: '#e9d5ff',
-    paddingVertical: 16,
-    paddingHorizontal: 16,
-    borderRadius: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  queueNumber: {
-    fontSize: 24,
-    fontWeight: 'bold',
+  viewTicketLink: {
     color: '#a855f7',
-  },
-  queueText: {
     fontSize: 13,
-    color: '#a855f7',
-    marginTop: 4,
+    fontWeight: '600',
+    textAlign: 'center',
+    textDecorationLine: 'underline',
   },
-  button: {
+  spacer: {
+    flex: 1,
+    minHeight: 40,
+  },
+  createButton: {
     backgroundColor: '#ffffff',
     borderWidth: 2,
     borderColor: '#9333ea',
     borderRadius: 26,
     paddingVertical: 12,
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 20,
   },
-  buttonText: {
+  createButtonText: {
     color: '#9333ea',
     fontSize: 15,
     fontWeight: '600',
-  },
-  spacer: {
-    height: 20,
   },
 });

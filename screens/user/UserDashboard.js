@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: 96,
     height: 96,
-    backgroundColor: '#8750abd3',
+    backgroundColor: '#8750abe7',
     borderRadius: 24,
     justifyContent: 'center',
     alignItems: 'center',
@@ -246,13 +246,13 @@ const styles = StyleSheet.create({
   LogOutButton: {
     backgroundColor: '#ffffff',
     borderWidth: 2,
-    borderColor: '#9333ea',
-    borderRadius: 12,
+    borderColor: '#8A2D7F',
+    borderRadius: 26,
     paddingVertical: 16,
     alignItems: 'center',
   },
   LogOutButtonText: {
-    color: '#9333ea',
+    color: '#78226eff',
     fontSize: 16,
     fontWeight: '600',
   },

@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     borderRadius: 26,
     paddingVertical: 14,
     alignItems: 'center',
-    marginTop: 40,
+    marginTop: 55,
   },
   createTicketButtonText: {
     color: '#78226eff',
