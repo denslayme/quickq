@@ -17,6 +17,7 @@ export default function TicketInfo({ navigation }) {
 
   const handleCreateAnother = () => {
     console.log('Create Another Ticket pressed');
+    navigation.navigate('UserDashboard');
   };
 
   return (
@@ -53,19 +54,30 @@ export default function TicketInfo({ navigation }) {
 
         {/* Ticket Number Box */}
         <LinearGradient
-          colors={['#c084fc', '#a855f7']}
+          colors={['#a78bfa', '#c084fc', '#d946ef']}
           start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
+          end={{ x: 0, y: 1 }}
           style={styles.ticketNumberBox}
         >
           <Text style={styles.ticketNumber}>#Q042</Text>
+          
+          {/* Status Indicator */}
+          <View style={styles.statusContainer}>
+            <View style={styles.statusDot} />
+            <Text style={styles.statusText}>Pending</Text>
+          </View>
         </LinearGradient>
 
         {/* Queue Info Box */}
-        <View style={styles.queueInfoBox}>
+        <LinearGradient
+          colors={['#e9d5ff', '#ddd6fe']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 1 }}
+          style={styles.queueInfoBox}
+        >
           <Text style={styles.queueNumber}>4</Text>
           <Text style={styles.queueText}>People are ahead of you</Text>
-        </View>
+        </LinearGradient>
 
         <View style={styles.spacer} />
 
@@ -139,9 +151,26 @@ const styles = StyleSheet.create({
     fontSize: 48,
     fontWeight: 'bold',
     color: '#ffffff',
+    marginBottom: 12,
+  },
+  statusContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 4,
+  },
+  statusDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#ef4444',
+    marginRight: 8,
+  },
+  statusText: {
+    fontSize: 16,
+    color: '#ffffff',
+    fontWeight: '500',
   },
   queueInfoBox: {
-    backgroundColor: '#e9d5ff',
     paddingVertical: 32,
     paddingHorizontal: 16,
     borderRadius: 20,
@@ -152,11 +181,11 @@ const styles = StyleSheet.create({
   queueNumber: {
     fontSize: 40,
     fontWeight: 'bold',
-    color: '#a855f7',
+    color: '#7c3aed',
   },
   queueText: {
     fontSize: 14,
-    color: '#a855f7',
+    color: '#7c3aed',
     marginTop: 8,
     fontWeight: '500',
   },

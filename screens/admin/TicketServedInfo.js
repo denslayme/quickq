@@ -33,34 +33,26 @@ export default function TicketServedInfo({ navigation }) {
   
   return (
     <SafeAreaView style={styles.container}>
-       <LinearGradient
+      <LinearGradient
         colors={['#8A2D7F', '#8650AB', '#8372D8']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={styles.header}
       >
-        <Text style={styles.headerTitle}>Admin Panel</Text>
-        <Text style={styles.headerSubtitle}>View Ticket Served Info</Text>
+        <View style={styles.headerContent}>
+          <Text style={styles.headerTitle}>Admin Panel</Text>
+          <Text style={styles.headerSubtitle}>View Ticket Served Info</Text>
+        </View>
       </LinearGradient>
+
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-
-       <LinearGradient
-        colors={['#8A2D7F', '#8650AB', '#8372D8']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        style={styles.ticketNumberCard}
-      >
-        <Text style={styles.headerTitle}>Admin Panel</Text>
-        <Text style={styles.headerSubtitle}>View Ticket Served Info</Text>
-      </LinearGradient>
-
-      {/* Back Button */}
-              <TouchableOpacity
-                style={styles.backButton}
-                onPress={handleBack}
-              >
-                <Ionicons name="chevron-back" size={24} color="#000000" />
-              </TouchableOpacity>
+        {/* Back Button */}
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={handleBack}
+        >
+          <Ionicons name="chevron-back" size={24} color="#000000" />
+        </TouchableOpacity>
 
         {/* Status Badge */}
         <View style={styles.statusContainer}>
@@ -75,7 +67,7 @@ export default function TicketServedInfo({ navigation }) {
           colors={['#8A2D7F', '#8650AB', '#8372D8']}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
-        style={styles.ticketNumberCard}
+          style={styles.ticketNumberCard}
         >
           <Text style={styles.ticketLabel}>Ticket Number</Text>
           <Text style={styles.ticketNumber}>{ticketData.ticketNumber}</Text>
@@ -168,21 +160,20 @@ export default function TicketServedInfo({ navigation }) {
         </TouchableOpacity>
 
         {/* QR Scanner Button */}
-          <TouchableOpacity 
-            onPress={handleQRScanner}
-            activeOpacity={0.8}
+        <TouchableOpacity 
+          onPress={handleQRScanner}
+          activeOpacity={0.8}
+        >
+          <LinearGradient
+            colors={['#8a2d7fbd', '#8750abc2', '#8372d8b8']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.scanAnotherButton}
           >
-            <LinearGradient
-              colors={['#8a2d7fbd', '#8750abc2', '#8372d8b8']}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              style={styles.scanAnotherButton}
-            >
-              <Ionicons name="qr-code" size={24} color="white" style={styles.qrIcon} />
-              <Text style={styles.scanAnotherButtonText}>Scan Another QR</Text>
-            </LinearGradient>
-          </TouchableOpacity>
-
+            <Ionicons name="qr-code" size={24} color="white" style={styles.qrIcon} />
+            <Text style={styles.scanAnotherButtonText}>Scan Another QR</Text>
+          </LinearGradient>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );
@@ -197,14 +188,18 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 40,
     paddingHorizontal: 32,
-    flexDirection: 'row',
     justifyContent: 'center',
-    position: 'relative',
+    alignItems: 'center',
+  },
+  headerContent: {
+    alignItems: 'center',
   },
   headerTitle: {
     fontSize: 32,
     fontWeight: 'bold',
     color: 'white',
+    textAlign: 'center',
+    marginBottom: 4,
   },
   headerSubtitle: {
     fontSize: 16,
@@ -215,11 +210,12 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
   },
-   backButton: {
+  backButton: {
     width: 40,
     height: 40,
     justifyContent: 'center',
     alignItems: 'flex-start',
+    marginBottom: 16,
   },
   statusContainer: {
     alignItems: 'center',
@@ -317,6 +313,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 16,
     borderRadius: 22,
+    marginBottom: 20,
   },
   scanAnotherButtonText: {
     fontSize: 18,
