@@ -142,8 +142,10 @@ const styles = StyleSheet.create({
     borderRadius: 26,
     paddingVertical: 16,
     alignItems: 'center',
-    marginTop: 8,
-    marginBottom: 16,
+    marginTop: 5,
+    marginBottom: 2,
+    width: '100%',
+    margin
   },
   buttonText: {
     color: '#ffffff',
