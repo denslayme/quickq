@@ -19,10 +19,7 @@ export default function TicketCreated({ route, navigation }) {
 
   const handleCreateAnother = () => {
     console.log('Create Another Ticket pressed');
-    navigation.navigate('OfficeClicked', {
-      officeName: officeName,
-      officeId: officeId
-    });
+    navigation.navigate('UserDashboard');
   };
 
   const handleViewTicket = () => {
@@ -61,11 +58,10 @@ export default function TicketCreated({ route, navigation }) {
 
         {/* QR Code Box */}
         <View style={styles.qrCodeContainer}>
-          <View style={styles.qrCodeBox}>
             <View style={styles.qrPlaceholder}>
               <Text style={styles.qrPlaceholderText}>QR CODE</Text>
             </View>
-          </View>
+          
 
           {/* View Ticket Info Link */}
           <TouchableOpacity onPress={handleViewTicket} style={styles.viewTicketLinkContainer}>
@@ -162,19 +158,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 24,
   },
-  qrCodeBox: {
-    width: 220,
-    height: 220,
-    backgroundColor: '#f3f4f6',
-    borderRadius: 12,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
   qrPlaceholder: {
-    width: 180,
-    height: 180,
-    backgroundColor: '#8650AB',
+    width: 345,
+    height: 345,
+    backgroundColor: '#8a2876ff',
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
@@ -188,7 +175,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   viewTicketLink: {
-    color: '#a855f7',
+    color: '#8A2D7F',
     fontSize: 13,
     fontWeight: '600',
     textAlign: 'center',
@@ -201,14 +188,13 @@ const styles = StyleSheet.create({
   createButton: {
     backgroundColor: '#ffffff',
     borderWidth: 2,
-    borderColor: '#9333ea',
+    borderColor: '#8A2D7F',
     borderRadius: 26,
     paddingVertical: 12,
     alignItems: 'center',
-    marginBottom: 20,
   },
   createButtonText: {
-    color: '#9333ea',
+    color: '#78226eff',
     fontSize: 15,
     fontWeight: '600',
   },
@@ -220,7 +206,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   popupContainer: {
-    backgroundColor: '#f3f4f6',
+    backgroundColor: '#ced0d4ff',
     borderRadius: 20,
     padding: 32,
     width: '85%',

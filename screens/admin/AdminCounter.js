@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     height: 40,
     justifyContent: 'center',
     alignItems: 'flex-start',
-    marginTop: 16,
+    marginLeft: 4,
     marginBottom: 8,
   },
   sectionTitle: {

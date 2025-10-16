@@ -165,12 +165,12 @@ const styles = StyleSheet.create({
   },
   infoCard: {
     backgroundColor: '#ffffff',
-    borderRadius: 16,
+    borderRadius: 22,
     borderWidth: 2,
-    borderColor: '#e5e7eb',
+    borderColor: '#8A2D7F',
     padding: 20,
     marginBottom: 20,
-    shadowColor: '#000',
+    shadowColor: '#741865ff',
     shadowOffset: {
       width: 0,
       height: 2,

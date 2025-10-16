@@ -41,13 +41,13 @@ export default function QRScanInterface({ navigation }) {
         <Text style={styles.headerSubtitle}>Scan QR Code</Text>
       </LinearGradient>
 
-      {/* Content */}
-      <View style={styles.content}>
-
       {/* Back Button */}
       <TouchableOpacity style={styles.backButton} onPress={handleBack}>
       <Ionicons name="chevron-back" size={24} color="#000000" />
       </TouchableOpacity>
+
+      {/* Content */}
+      <View style={styles.content}>
 
       {/* QR Scanner Frame */}
         <View style={styles.scannerContainer}>
@@ -75,21 +75,29 @@ export default function QRScanInterface({ navigation }) {
         </Text>
 
         {/* Scan Button */}
-        <TouchableOpacity 
-          style={[styles.scanButton, isScanning && styles.scanButtonDisabled]}
-          onPress={handleScan}
-          disabled={isScanning}
-        >
-          <Ionicons 
-            name={isScanning ? "hourglass-outline" : "scan-outline"} 
-            size={24} 
-            color="white" 
-            style={styles.buttonIcon}
-          />
-          <Text style={styles.scanButtonText}>
-            {isScanning ? 'Scanning...' : 'Start Scan'}
-          </Text>
-        </TouchableOpacity>
+<TouchableOpacity 
+  onPress={handleScan}
+  disabled={isScanning}
+  activeOpacity={0.8}
+>
+  <LinearGradient
+    colors={isScanning ? ['#a855f7', '#c084fc'] : ['#8a2d7fbd', '#8750abc2', '#8372d8b8']}
+    start={{ x: 0, y: 0 }}
+    end={{ x: 1, y: 0 }} 
+    style={[styles.scanButton, isScanning && styles.scanButtonDisabled]}
+  >
+    <Ionicons 
+      name={isScanning ? "hourglass-outline" : "scan-outline"} 
+      size={24} 
+      color="white" 
+      style={styles.buttonIcon}
+    />
+    <Text style={styles.scanButtonText}>
+      {isScanning ? 'Scanning...' : 'Start Scan'}
+    </Text>
+  </LinearGradient>
+</TouchableOpacity>
+        
 
         {/* Info */}
         <View style={styles.infoBox}>
@@ -119,7 +127,8 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     alignItems: 'flex-start',
-    marginTop: 16,
+    marginTop: 2,
+    marginLeft: 4,
     marginBottom: 8,
   },
   headerTitle: {
@@ -157,7 +166,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 40,
     height: 40,
-    borderColor: '#9333ea',
+    borderColor: '#8a2d7f',
   },
   topLeft: {
     top: 12,
@@ -193,7 +202,7 @@ const styles = StyleSheet.create({
     left: 20,
     right: 20,
     height: 2,
-    backgroundColor: '#9333ea',
+    backgroundColor: '#8a2d7f',
   },
   qrIcon: {
     opacity: 0.3,
@@ -205,7 +214,6 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   scanButton: {
-    backgroundColor: '#9333ea',
     borderRadius: 24,
     paddingVertical: 16,
     paddingHorizontal: 32,
@@ -214,7 +222,6 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   scanButtonDisabled: {
-    backgroundColor: '#a855f7',
     opacity: 0.7,
   },
   buttonIcon: {
