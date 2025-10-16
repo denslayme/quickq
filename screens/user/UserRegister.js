@@ -69,7 +69,14 @@ export default function UserRegister({ navigation }) {
         </View>
         
         <TouchableOpacity style={styles.button} onPress={handleRegister}>
-          <Text style={styles.buttonText}>Register</Text>
+          <LinearGradient
+              colors={['#8a2d7fbd', '#8750abc2', '#8372d8b8']}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={styles.button}
+            >
+              <Text style={styles.buttonText}>Register</Text>
+            </LinearGradient>
         </TouchableOpacity>
         
         <View style={styles.links}>
@@ -132,8 +139,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   button: {
-    backgroundColor: '#9333ea',
-    borderRadius: 24,
+    borderRadius: 26,
     paddingVertical: 16,
     alignItems: 'center',
     marginTop: 8,

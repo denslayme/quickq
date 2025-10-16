@@ -50,8 +50,9 @@ export default function TicketCreated({ route, navigation }) {
         </TouchableOpacity>
       </LinearGradient>
 
-      {/* Content */}
+        {/* Content */}
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+        
         {/* Back Button */}
         <TouchableOpacity style={styles.backButton} onPress={handleBack}>
           <Ionicons name="chevron-back" size={24} color="#000000" />

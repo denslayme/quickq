@@ -25,6 +25,10 @@ export default function QRScanInterface({ navigation }) {
     }, 2000);
   };
 
+  const handleBack = () => {}
+    navigation.goBack();
+  ;
+
   return (
     <SafeAreaView style={styles.container}>
        <LinearGradient
@@ -39,7 +43,13 @@ export default function QRScanInterface({ navigation }) {
 
       {/* Content */}
       <View style={styles.content}>
-        {/* QR Scanner Frame */}
+
+      {/* Back Button */}
+      <TouchableOpacity style={styles.backButton} onPress={handleBack}>
+      <Ionicons name="chevron-back" size={24} color="#000000" />
+      </TouchableOpacity>
+
+      {/* QR Scanner Frame */}
         <View style={styles.scannerContainer}>
           <View style={styles.scannerFrame}>
             <View style={[styles.corner, styles.topLeft]} />
@@ -99,7 +109,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   header: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
     paddingTop: 20,
     paddingBottom: 20,
@@ -122,6 +132,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'white',
     textAlign: 'center',
+  },
+  backButton: {
+    width: 40,
+    height: 40,
+    marginBottom: 24,
+    justifyContent: 'center',
   },
   content: {
     flex: 1,

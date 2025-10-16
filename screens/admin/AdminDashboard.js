@@ -226,7 +226,6 @@ const styles = StyleSheet.create({
     lineHeight: 18,
   },
   LogOutButton: {
-    backgroundColor: '#ffffff',
     borderWidth: 2,
     borderColor: '#8A2D7F',
     borderRadius: 26,
