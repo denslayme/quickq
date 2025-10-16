@@ -1,11 +1,12 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Modal, StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function TicketCreated({ route, navigation }) {
   const { officeName = 'Office', officeId } = route.params || {};
+  const [showSuccessPopup, setShowSuccessPopup] = useState(true);
 
   const handleNotif = () => {
     console.log('Notif button pressed');
@@ -50,7 +51,7 @@ export default function TicketCreated({ route, navigation }) {
         </TouchableOpacity>
       </LinearGradient>
 
-        {/* Content */}
+      {/* Content */}
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         
         {/* Back Button */}
@@ -66,11 +67,6 @@ export default function TicketCreated({ route, navigation }) {
             </View>
           </View>
 
-          {/* Success Message */}
-          <View style={styles.successMessage}>
-            <Text style={styles.successText}>Ticket/QR created successfully!</Text>
-          </View>
-
           {/* View Ticket Info Link */}
           <TouchableOpacity onPress={handleViewTicket} style={styles.viewTicketLinkContainer}>
             <Text style={styles.viewTicketLink}>View Ticket Info</Text>
@@ -84,6 +80,36 @@ export default function TicketCreated({ route, navigation }) {
           <Text style={styles.createButtonText}>Create Another Ticket</Text>
         </TouchableOpacity>
       </ScrollView>
+
+      {/* Success Popup */}
+      <Modal
+        transparent={true}
+        visible={showSuccessPopup}
+        animationType="fade"
+        onRequestClose={() => setShowSuccessPopup(false)}
+      >
+        <View style={styles.overlay}>
+          <View style={styles.popupContainer}>
+            {/* Close Button */}
+            <TouchableOpacity 
+              style={styles.closeButton} 
+              onPress={() => setShowSuccessPopup(false)}
+            >
+              <Ionicons name="close" size={24} color="#374151" />
+            </TouchableOpacity>
+
+            {/* Success Icon */}
+            <View style={styles.iconContainer}>
+              <Ionicons name="checkmark-circle" size={60} color="#10b981" />
+            </View>
+
+            {/* Success Message */}
+            <Text style={styles.successMessage}>
+              Ticket/QR created successfully!
+            </Text>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 }
@@ -158,19 +184,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
   },
-  successMessage: {
-    backgroundColor: '#d1fae5',
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    borderRadius: 8,
-    marginBottom: 16,
-  },
-  successText: {
-    color: '#059669',
-    fontSize: 12,
-    fontWeight: '600',
-    textAlign: 'center',
-  },
   viewTicketLinkContainer: {
     paddingVertical: 8,
   },
@@ -198,5 +211,37 @@ const styles = StyleSheet.create({
     color: '#9333ea',
     fontSize: 15,
     fontWeight: '600',
+  },
+  // Popup Styles
+  overlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  popupContainer: {
+    backgroundColor: '#f3f4f6',
+    borderRadius: 20,
+    padding: 32,
+    width: '85%',
+    maxWidth: 400,
+    alignItems: 'center',
+    position: 'relative',
+  },
+  closeButton: {
+    position: 'absolute',
+    top: 16,
+    right: 16,
+    padding: 4,
+    zIndex: 1,
+  },
+  iconContainer: {
+    marginBottom: 16,
+  },
+  successMessage: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#33b300ff',
+    textAlign: 'center',
   },
 });

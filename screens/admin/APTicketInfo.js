@@ -57,68 +57,68 @@ export default function APTicketInfo({ navigation, route }) {
         style={styles.content}
         showsVerticalScrollIndicator={false}
       >
-        {/* Ticket Number and Serve Button */}
-        <View style={styles.ticketHeader}>
-          <Text style={styles.ticketNumber}>{ticketData.ticketNumber}</Text>
-          <TouchableOpacity 
-            style={[styles.serveButton, isServed && styles.servedButton]}
-            onPress={handleServe}
-            disabled={isServed}
-            activeOpacity={isServed ? 1 : 0.7}
-          >
-            <Text style={[styles.serveButtonText, isServed && styles.servedButtonText]}>
-              {isServed ? 'Served' : 'Serve'}
-            </Text>
-          </TouchableOpacity>
-        </View>
-
-        {/* Ticket Information */}
-        <View style={styles.infoContainer}>
-          <View style={styles.infoItem}>
-            <Text style={styles.infoLabel}>Name:</Text>
-            <Text style={styles.infoValue}>{ticketData.name}</Text>
+        {/* Ticket Information Card */}
+        <View style={styles.infoCard}>
+          {/* Ticket Number and Serve Button */}
+          <View style={styles.ticketHeader}>
+            <Text style={styles.ticketNumber}>{ticketData.ticketNumber}</Text>
+            <TouchableOpacity 
+              style={[styles.serveButton, isServed && styles.servedButton]}
+              onPress={handleServe}
+              disabled={isServed}
+              activeOpacity={isServed ? 1 : 0.7}
+            >
+              <Text style={[styles.serveButtonText, isServed && styles.servedButtonText]}>
+                {isServed ? 'Served' : 'Serve'}
+              </Text>
+            </TouchableOpacity>
           </View>
 
-          <View style={styles.infoItem}>
-            <Text style={styles.infoLabel}>Year & Section:</Text>
-            <Text style={styles.infoValue}>{ticketData.yearSection}</Text>
-          </View>
+          {/* Horizontal divider line */}
+          <View style={styles.divider} />
 
-          <View style={styles.infoItem}>
-            <Text style={styles.infoLabel}>Customer Classification:</Text>
-            <Text style={styles.infoValue}>{ticketData.classification}</Text>
-          </View>
+          {/* Ticket Information */}
+          <View style={styles.infoContainer}>
+            <View style={styles.infoItem}>
+              <Text style={styles.infoLabel}>Name: <Text style={styles.infoValue}>{ticketData.name}</Text></Text>
+            </View>
 
-          <View style={styles.infoItem}>
-            <Text style={styles.infoLabel}>Office Chosen:</Text>
-            <Text style={styles.infoValue}>{ticketData.office}</Text>
-          </View>
+            <View style={styles.infoItem}>
+              <Text style={styles.infoLabel}>Year & Section: <Text style={styles.infoValue}>{ticketData.yearSection}</Text></Text>
+            </View>
 
-          <View style={styles.infoItem}>
-            <Text style={styles.infoLabel}>Service Chosen/Concern:</Text>
-            <Text style={styles.infoValue}>{ticketData.service}</Text>
+            <View style={styles.infoItem}>
+              <Text style={styles.infoLabel}>Customer Classification: <Text style={styles.infoValue}>{ticketData.classification}</Text></Text>
+            </View>
+
+            <View style={styles.infoItem}>
+              <Text style={styles.infoLabel}>Office Chosen: <Text style={styles.infoValue}>{ticketData.office}</Text></Text>
+            </View>
+
+            <View style={styles.infoItem}>
+              <Text style={styles.infoLabel}>Service Chosen/Concern: <Text style={styles.infoValue}>{ticketData.service}</Text></Text>
+            </View>
           </View>
         </View>
       </ScrollView>
 
       {/* QR Scanner Button */}
-<View style={styles.footer}>
-  <TouchableOpacity 
-    onPress={handleQRScanner}
-    activeOpacity={0.8}
-  >
-    <LinearGradient
-      colors={['#8a2d7fbd', '#8750abc2', '#8372d8b8']}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 0 }}
-      style={styles.qrButton}
-    >
-      <Ionicons name="qr-code" size={24} color="white" style={styles.qrIcon} />
-      <Text style={styles.qrButtonText}>Scan QR</Text>
-    </LinearGradient>
-  </TouchableOpacity>
-</View>
-
+      <View style={styles.footer}>
+        <TouchableOpacity 
+          onPress={handleQRScanner}
+          activeOpacity={0.8}
+        >
+          <LinearGradient
+            colors={['#8a2d7fbd', '#8750abc2', '#8372d8b8']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.qrButton}
+          >
+            <Ionicons name="qr-code" size={24} color="white" style={styles.qrIcon} />
+            <Text style={styles.qrButtonText}>QR Scanner</Text>
+          </LinearGradient>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }
@@ -163,11 +163,27 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 24,
   },
+  infoCard: {
+    backgroundColor: '#ffffff',
+    borderRadius: 16,
+    borderWidth: 2,
+    borderColor: '#e5e7eb',
+    padding: 20,
+    marginBottom: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
+  },
   ticketHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 32,
+    marginBottom: 0,
   },
   ticketNumber: {
     fontSize: 24,
@@ -191,8 +207,13 @@ const styles = StyleSheet.create({
   servedButtonText: {
     color: '#6b7280',
   },
+  divider: {
+    height: 1,
+    backgroundColor: '#e5e7eb',
+    marginVertical: 16,
+  },
   infoContainer: {
-    gap: 24,
+    gap: 16,
   },
   infoItem: {
     gap: 4,
@@ -203,7 +224,8 @@ const styles = StyleSheet.create({
     color: '#374151',
   },
   infoValue: {
-    fontSize: 16,
+    fontSize: 14,
+    fontWeight: '400',
     color: '#1f2937',
   },
   footer: {

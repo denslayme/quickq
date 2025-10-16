@@ -42,15 +42,15 @@ export default function ViewTicketServed({ navigation, route }) {
           <Text style={styles.officeName}>{officeName}</Text>
           <Text style={styles.headerSubtitle}>Ticket Served List</Text>
         </View>
+      </LinearGradient>
 
       {/* Back Button */}
       <TouchableOpacity 
         style={styles.backButton}
         onPress={() => navigation.goBack()}
       >
-        <Ionicons name="chevron-back" size={30} color="white" />
+        <Ionicons name="chevron-back" size={30} color="black" />
       </TouchableOpacity>  
-      </LinearGradient>
 
       {/* Tickets Container */}
       <View style={styles.content}>
@@ -117,11 +117,10 @@ const styles = StyleSheet.create({
     marginBottom: 9,
   },
   backButton: {
-  position: "absolute",
-  top: 100,
-  left: 10,
-  padding: 4,
-  zIndex: 10,
+    width: 40,
+    height: 40,
+    marginBottom: 32,
+    justifyContent: 'center',
   },
   content: {
     flex: 1,

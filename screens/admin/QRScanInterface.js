@@ -25,9 +25,9 @@ export default function QRScanInterface({ navigation }) {
     }, 2000);
   };
 
-  const handleBack = () => {}
+  const handleBack = () => {
     navigation.goBack();
-  ;
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -132,12 +132,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'white',
     textAlign: 'center',
-  },
-  backButton: {
-    width: 40,
-    height: 40,
-    marginBottom: 24,
-    justifyContent: 'center',
   },
   content: {
     flex: 1,

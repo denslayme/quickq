@@ -52,7 +52,7 @@ const handleLogin = () => {
   <LinearGradient
     colors={['#8a2d7fbd', '#8750abc2', '#8372d8b8']}
     start={{ x: 0, y: 0 }}
-    end={{ x: 1, y: 0 }}
+    end={{ x: 1, y: 0 }} 
     style={styles.button}
   >
     <Text style={styles.buttonText}>Login</Text>

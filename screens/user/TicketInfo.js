@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 5,
-    backgroundColor: '#ef4444',
+    backgroundColor: '#ff0202ff',
     marginRight: 8,
   },
   statusText: {
