@@ -124,8 +124,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   backButton: {
-    width: 40,
-    height: 40,
+    width: 45,
+    height: 45,
     alignItems: 'flex-start',
     marginTop: 2,
     marginLeft: 4,

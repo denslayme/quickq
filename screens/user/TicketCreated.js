@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   },
   qrCodeContainer: {
     alignItems: 'center',
-    marginBottom: 24,
+    marginBottom: 60,
   },
   qrPlaceholder: {
     width: 345,
@@ -192,10 +192,12 @@ const styles = StyleSheet.create({
     borderRadius: 26,
     paddingVertical: 12,
     alignItems: 'center',
+    marginTop: 60,
+    marginBottom: 5,
   },
   createButtonText: {
     color: '#78226eff',
-    fontSize: 15,
+    fontSize: 18,
     fontWeight: '600',
   },
   // Popup Styles
@@ -206,7 +208,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   popupContainer: {
-    backgroundColor: '#ced0d4ff',
+    backgroundColor: '#edededff',
     borderRadius: 20,
     padding: 32,
     width: '85%',

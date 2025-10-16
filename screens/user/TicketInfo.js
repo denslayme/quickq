@@ -54,7 +54,7 @@ export default function TicketInfo({ navigation }) {
 
         {/* Ticket Number Box */}
         <LinearGradient
-          colors={['#a78bfa', '#c084fc', '#d946ef']}
+          colors={['#856bcbc4', '#874ca5c4', '#8a2d7fc4']}
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
           style={styles.ticketNumberBox}
@@ -70,7 +70,7 @@ export default function TicketInfo({ navigation }) {
 
         {/* Queue Info Box */}
         <LinearGradient
-          colors={['#e9d5ff', '#ddd6fe']}
+          colors={['#f8abc2ff','#c896e2ff','#b47dd1ff']}
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
           style={styles.queueInfoBox}
@@ -166,8 +166,8 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   statusText: {
-    fontSize: 16,
-    color: '#ffffff',
+    fontSize: 18,
+    color: '#ff0202ff',
     fontWeight: '500',
   },
   queueInfoBox: {
@@ -176,16 +176,18 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 24,
+    marginBottom: 55,
   },
   queueNumber: {
-    fontSize: 40,
+    fontSize: 55,
+    fontFamily: 'Lucida Calligraphy',
     fontWeight: 'bold',
-    color: '#7c3aed',
+    color: '#8a2d7f',
   },
   queueText: {
-    fontSize: 14,
-    color: '#7c3aed',
+    fontSize: 19,
+    fontFamily: 'Lucida Calligraphy',
+    color: '#8a2d7f',
     marginTop: 8,
     fontWeight: '500',
   },
@@ -196,14 +198,15 @@ const styles = StyleSheet.create({
   createButton: {
     backgroundColor: '#ffffff',
     borderWidth: 2,
-    borderColor: '#9333ea',
+    borderColor: '#8A2D7F',
     borderRadius: 26,
     paddingVertical: 14,
     paddingHorizontal: 24,
     alignItems: 'center',
+    marginBottom: 5,
   },
   createButtonText: {
-    color: '#9333ea',
+    color: '#78226eff',
     fontSize: 15,
     fontWeight: '600',
   },

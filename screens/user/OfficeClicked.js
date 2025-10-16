@@ -164,6 +164,8 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   infoCard: {
+    height: 420,
+    width: 347,
     backgroundColor: '#ffffff',
     borderRadius: 16,
     borderWidth: 1,
@@ -215,7 +217,8 @@ const styles = StyleSheet.create({
     borderRadius: 26,
     paddingVertical: 14,
     alignItems: 'center',
-    marginTop: 55,
+    marginTop: 30,
+    marginBottom: 5,
   },
   createTicketButtonText: {
     color: '#78226eff',
