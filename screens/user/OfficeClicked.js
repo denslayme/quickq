@@ -23,11 +23,11 @@ export default function OfficeClicked({ route, navigation }) {
   };
 
   const handleCreateTicket = () => {
-  console.log('Create Ticket/QR code pressed');
-  navigation.navigate('TicketCreated', {
-    officeName: officeName,
-    officeId: officeId
-  });
+    console.log('Create Ticket/QR code pressed');
+    navigation.navigate('TicketCreated', {
+      officeName: officeName,
+      officeId: officeId
+    });
   };
 
   const handleNotif = () => {
@@ -98,15 +98,17 @@ export default function OfficeClicked({ route, navigation }) {
             </View>
           </View>
         </View>
+      </ScrollView>
 
-        {/* Create Ticket Button */}
+      {/* Create Ticket Button - Absolute positioned */}
+      <View style={styles.buttonContainer}>
         <TouchableOpacity 
           style={styles.createTicketButton}
           onPress={handleCreateTicket}
         >
           <Text style={styles.createTicketButtonText}>Create Ticket/QR code</Text>
         </TouchableOpacity>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
@@ -147,7 +149,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingHorizontal: 24,
-    paddingBottom: 32,
+    paddingBottom: 100, // Added padding to prevent content from going under button
   },
   backButton: {
     width: 40,
@@ -171,7 +173,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#8A2D7F',
     padding: 16,
-    marginBottom: 24,
+    marginBottom: 35,
   },
   infoRow: {
     marginBottom: 16,
@@ -210,6 +212,12 @@ const styles = StyleSheet.create({
     flex: 1,
     lineHeight: 20,
   },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 63,
+    left: 24,
+    right: 24,
+  },
   createTicketButton: {
     backgroundColor: '#ffffff',
     borderWidth: 2,
@@ -217,8 +225,6 @@ const styles = StyleSheet.create({
     borderRadius: 26,
     paddingVertical: 14,
     alignItems: 'center',
-    marginTop: 30,
-    marginBottom: 5,
   },
   createTicketButtonText: {
     color: '#78226eff',
