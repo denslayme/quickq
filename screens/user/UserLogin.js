@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function UserLogin({ navigation }) {
   const [email, setEmail] = useState('');
@@ -13,10 +14,15 @@ const handleLogin = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Welcome Back</Text>
-        <Text style={styles.headerSubtitle}>Sign in to continue</Text>
-      </View>
+      <LinearGradient
+  colors={['#8A2D7F', '#8650AB', '#8372D8']}
+  start={{ x: 0, y: 0 }}
+  end={{ x: 1, y: 0 }}
+  style={styles.header}
+>
+  <Text style={styles.headerTitle}>Welcome Back</Text>
+  <Text style={styles.headerSubtitle}>Sign in to continue</Text>
+</LinearGradient>    
       
       <View style={styles.form}>
         <View style={styles.inputGroup}>
@@ -42,9 +48,16 @@ const handleLogin = () => {
           />
         </View>
         
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
+       <TouchableOpacity onPress={handleLogin} activeOpacity={0.8}>
+  <LinearGradient
+    colors={['#8a2d7fbd', '#8750abc2', '#8372d8b8']}
+    start={{ x: 0, y: 0 }}
+    end={{ x: 1, y: 0 }} 
+    style={styles.button}
+  >
+    <Text style={styles.buttonText}>Login</Text>
+  </LinearGradient>
+</TouchableOpacity>
         
         <View style={styles.links}>
           <TouchableOpacity onPress={() => navigation.navigate('UserRegister')}>
@@ -68,7 +81,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   header: {
-    backgroundColor: '#9333ea',
     paddingTop: 60,
     paddingBottom: 40,
     paddingHorizontal: 32,
@@ -107,8 +119,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   button: {
-    backgroundColor: '#9333ea',
-    borderRadius: 24,
+    borderRadius: 26,
     paddingVertical: 16,
     alignItems: 'center',
     marginTop: 8,
@@ -117,14 +128,14 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 16,
     fontWeight: 'bold',
-  },
+  }, 
   links: {
     alignItems: 'center',
     marginTop: 24,
     gap: 12,
   },
   linkText: {
-    color: '#9333ea',
+    color: '#8650AB',
     fontSize: 14,
     fontWeight: '500',
   },
