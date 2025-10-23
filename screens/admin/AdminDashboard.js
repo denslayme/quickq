@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default function UserDashboard({ navigation }) {
+export default function AdminDashboard({ navigation }) {
   const offices = [
     {
       id: 1,
@@ -52,42 +52,31 @@ export default function UserDashboard({ navigation }) {
 
   const handleLogOut = () => {
     console.log('Log Out pressed');
-    navigation.navigate('UserLogin');
+    navigation.navigate('AdminLogin');
   }
 
   const handleOfficePress = (office) => {
     console.log('Selected office:', office.name);
-    navigation.navigate('OfficeClicked', { 
+    navigation.navigate('AdminCounter', { 
       officeName: office.name,
       officeId: office.id 
     });
   };
 
-  const handleNotif = () => {
-    console.log('Notif button pressed');
-    navigation.navigate('NotifPage');
-  };
-
   return (
     <SafeAreaView style={styles.container}>
-      {/* Header */}
-      <LinearGradient
-        colors={['#8A2D7F', '#8650AB', '#8372D8']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        style={styles.header}
-      >
+        {/* Header */}
+          <LinearGradient
+      colors={['#8A2D7F', '#8650AB', '#8372D8']}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 0 }}
+      style={styles.header}
+    >
         <View style={styles.headerContent}>
           <Text style={styles.headerTitle}>QuickQ</Text>
-          <Text style={styles.headerSubtitle}>Choose an office in USTP-CDO</Text>
+          <Text style={styles.headerSubtitle}>Click your Office Assigned</Text>
         </View>
-        <TouchableOpacity 
-          style={styles.notificationButton}
-          onPress={handleNotif}
-        >
-          <Ionicons name="notifications-outline" size={28} color="#ffffff" />
-        </TouchableOpacity>
-      </LinearGradient>
+    </LinearGradient>
 
       {/* Office Grid */}
       <View style={styles.content}>
@@ -150,7 +139,7 @@ export default function UserDashboard({ navigation }) {
             </TouchableOpacity>
           ))}
         </View>
-
+        
         {/* Log Out Button */}
         <View style={styles.logoutContainer}>
           <TouchableOpacity
@@ -193,13 +182,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#e9d5ff',
     textAlign: 'center',
-  },
-  notificationButton: {
-    padding: 4,
-    marginTop: 4,
-    position: 'absolute',
-    right: 32,
-    top: 20,
   },
   content: {
     flex: 1,

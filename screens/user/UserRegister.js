@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function UserRegister({ navigation }) {
   const [fullName, setFullName] = useState('');
@@ -9,15 +10,19 @@ export default function UserRegister({ navigation }) {
 
   const handleRegister = () => {
     console.log('USER Register:', { fullName, email, password });
-    // Add your USER registration logic here
-  };
+    navigation.navigate('UserDashboard');   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Create Account</Text>
-        <Text style={styles.headerSubtitle}>Join QuickQ today</Text>
-      </View>
+       <LinearGradient
+  colors={['#8A2D7F', '#8650AB', '#8372D8']}
+  start={{ x: 0, y: 0 }}
+  end={{ x: 1, y: 0 }}
+  style={styles.header}
+>
+  <Text style={styles.headerTitle}>Create Account</Text>
+  <Text style={styles.headerSubtitle}>Join QuickQ today</Text>
+</LinearGradient>
       
       <ScrollView style={styles.form} showsVerticalScrollIndicator={false}>
         <View style={styles.inputGroup}>
@@ -64,7 +69,14 @@ export default function UserRegister({ navigation }) {
         </View>
         
         <TouchableOpacity style={styles.button} onPress={handleRegister}>
-          <Text style={styles.buttonText}>Register</Text>
+          <LinearGradient
+              colors={['#8a2d7fbd', '#8750abc2', '#8372d8b8']}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={styles.button}
+            >
+              <Text style={styles.buttonText}>Register</Text>
+            </LinearGradient>
         </TouchableOpacity>
         
         <View style={styles.links}>
@@ -89,7 +101,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   header: {
-    backgroundColor: '#9333ea',
     paddingTop: 60,
     paddingBottom: 40,
     paddingHorizontal: 32,
@@ -128,12 +139,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   button: {
-    backgroundColor: '#9333ea',
-    borderRadius: 24,
+    borderRadius: 26,
     paddingVertical: 16,
     alignItems: 'center',
-    marginTop: 8,
-    marginBottom: 16,
+    marginBottom: 2,
+    width: '100%',
   },
   buttonText: {
     color: '#ffffff',
@@ -146,7 +156,7 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   linkText: {
-    color: '#9333ea',
+    color: '#8650abff',
     fontSize: 14,
     fontWeight: '500',
   },
