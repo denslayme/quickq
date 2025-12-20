@@ -1,72 +1,112 @@
-import React from 'react';
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View, Alert, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { supabase } from '../../config/supabase';
 
-export default function UserDashboard({ navigation }) {
-  const offices = [
-    {
-      id: 1,
-      name: 'Admission Office',
-      image: require('../../assets/images/admission.png'),
-      screen: 'AdmissionOffice'
-    },
-    {
-      id: 2,
-      name: 'Scholarship Office',
-      image: require('../../assets/images/scholarship.png'),
-      screen: 'ScholarshipOffice'
-    },
-    {
-      id: 3,
-      name: 'Office of Student Affairs',
-      image: require('../../assets/images/osa.png'),
-      screen: 'OSAOffice'
-    },
-    {
-      id: 4,
-      name: 'Office of the Registrar',
-      image: require('../../assets/images/registrar.png'),
-      screen: 'RegistrarOffice'
-    },
-    {
-      id: 5,
-      name: 'USTP International Affairs Office',
-      image: require('../../assets/images/international.png'),
-      screen: 'InternationalOffice'
-    },
-    {
-      id: 6,
-      name: 'Student Affairs and Services',
-      image: require('../../assets/images/student-affairs.png'),
-      screen: 'StudentAffairsOffice'
-    },
-    {
-      id: 7,
-      name: 'Planning, Monitoring and Evaluation Office',
-      image: require('../../assets/images/pme.png'),
-      screen: 'PMEOffice'
+export default function UserDashboard({ navigation, route }) {
+  const { userId, userName } = route.params || {};
+  const [offices, setOffices] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Office images mapping
+  const officeImages = {
+    'Admission Office': require('../../assets/images/admission.png'),
+    'Scholarship Office': require('../../assets/images/scholarship.png'),
+    'Office of Student Affairs': require('../../assets/images/osa.png'),
+    'Office of the Registrar': require('../../assets/images/registrar.png'),
+    'USTP International Affairs Office': require('../../assets/images/international.png'),
+    'Student Affairs and Services': require('../../assets/images/student-affairs.png'),
+    'Planning, Monitoring and Evaluation Office': require('../../assets/images/pme.png')
+  };
+
+  useEffect(() => {
+    loadOffices();
+  }, []);
+
+  const loadOffices = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('offices')
+        .select('*')
+        .eq('is_active', true)
+        .order('name');
+
+      if (error) throw error;
+      
+      setOffices(data || []);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      Alert.alert('Error', 'Failed to load offices');
     }
-  ];
+  };
 
-  const handleLogOut = () => {
-    console.log('Log Out pressed');
-    navigation.navigate('UserLogin');
-  }
+  const handleLogOut = async () => {
+    Alert.alert(
+      'Log Out',
+      'Are you sure you want to logout?',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Log Out',
+          onPress: async () => {
+            try {
+              console.log('Logging out...');
+              const { error } = await supabase.auth.signOut();
+              if (error) {
+                console.error('Logout error:', error);
+                Alert.alert('Error', 'Failed to logout: ' + error.message);
+              } else {
+                console.log('Logout successful');
+                navigation.reset({
+                  index: 0,
+                  routes: [{ name: 'Home' }],
+                });
+              }
+            } catch (err) {
+              console.error('Logout exception:', err);
+              Alert.alert('Error', 'Failed to logout');
+            }
+          }
+        }
+      ]
+    );
+  };
 
   const handleOfficePress = (office) => {
-    console.log('Selected office:', office.name);
     navigation.navigate('OfficeClicked', { 
       officeName: office.name,
-      officeId: office.id 
+      officeId: office.id,
+      userId: userId
     });
   };
 
   const handleNotif = () => {
-    console.log('Notif button pressed');
-    navigation.navigate('NotifPage');
+    navigation.navigate('NotifPage', { userId });
   };
+
+  if (loading) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <LinearGradient
+          colors={['#8A2D7F', '#8650AB', '#8372D8']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={styles.header}
+        >
+          <View style={styles.headerContent}>
+            <Text style={styles.headerTitle}>QuickQ</Text>
+            <Text style={styles.headerSubtitle}>Choose an office in USTP-CDO</Text>
+          </View>
+        </LinearGradient>
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color="#8A2D7F" />
+        </View>
+      </SafeAreaView>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -101,7 +141,7 @@ export default function UserDashboard({ navigation }) {
             >
               <View style={styles.imageContainer}>
                 <Image 
-                  source={office.image} 
+                  source={officeImages[office.name]} 
                   style={styles.officeImage}
                   resizeMode="contain"
                 />
@@ -121,7 +161,7 @@ export default function UserDashboard({ navigation }) {
             >
               <View style={styles.imageContainer}>
                 <Image 
-                  source={office.image} 
+                  source={officeImages[office.name]} 
                   style={styles.officeImage}
                   resizeMode="contain"
                 />
@@ -141,7 +181,7 @@ export default function UserDashboard({ navigation }) {
             >
               <View style={styles.imageContainer}>
                 <Image 
-                  source={office.image} 
+                  source={officeImages[office.name]} 
                   style={styles.officeImage}
                   resizeMode="contain"
                 />
@@ -169,6 +209,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   header: {
     paddingTop: 20,
